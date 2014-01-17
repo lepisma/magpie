@@ -1,14 +1,20 @@
-from bottle import get, post, request, run, response
+from bottle import Bottle, request, response, run
 import devices
 
-@get('/')
-def showAll():
-	return devices.data
+app = Bottle()
 
-@post('/act')
+@app.hook('after_request')
+def enable_cors():
+    response.headers['Access-Control-Allow-Origin'] = '*'
+ 
+@app.get('/')
+def show():
+    return devices.data
+
+@app.post('/act')
 def act():
 	deviceId = request.forms.get('deviceId')
 	devices.changeState(deviceId)
 	return
 
-run(host = "localhost", port = 1111)
+app.run(host = "0.0.0.0", port = 1111)

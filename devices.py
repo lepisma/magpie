@@ -9,7 +9,6 @@ def changeState(id):
 		data[id]['status'] = 'off'
 	else:
 		data[id]['status'] = 'on'
-
 	json.dump(data, open('data.json', 'w'))
-	
+
 	return 1
