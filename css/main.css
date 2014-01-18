@@ -1,0 +1,130 @@
+body {
+	background-image: url("../images/blur.jpg");
+	background-attachment: fixed;
+}
+
+.container {
+	margin-top: 50pt;
+}
+
+.room-select {
+	z-index: 3;
+	padding-left: 0pt;
+	padding-right: 0pt;
+}
+
+.room-select ul li * {
+	display: inline;
+}
+
+.room-select ul {
+	list-style: none;
+	padding-top: 20pt;
+	padding-bottom: 20pt;
+	background-color: rgba(200, 228, 235, 1);
+	border-top-left-radius: 6pt;
+	border-bottom-left-radius: 6pt;
+	box-shadow: -1px 1px 100px #1C2731;
+}
+
+.room-select ul li {
+	padding-left: 16pt;
+	padding-top: 10pt;
+	border-top-left-radius: 6pt;
+	border-bottom-left-radius: 6pt;
+	padding-bottom: 10pt;
+}
+
+.room-selected {
+	box-shadow: 0px 0px 10px #1C2731;
+	background-color: #1C2731;
+	color: rgba(255, 255, 255, 0.71);
+}
+
+.stats {
+	padding-left: 0pt;
+	background-color: rgba(255, 255, 255, 0.17);
+	height: 400pt;
+	margin-bottom: 20pt;
+	border-top-right-radius: 6pt;
+	border-bottom-right-radius: 6pt;
+	border-bottom-left-radius: 6pt;
+	box-shadow: -1px 1px 100px #1C2731;
+}
+
+.hud {
+	width: auto;
+	z-index: 10;
+	padding-left: 0pt;
+	padding-right: 0pt;
+	background-color: rgba(255, 255, 255, 0.0);
+	margin-top: -145pt;
+	margin-left: -11pt;
+	height: 123pt;
+	color: #1C2731;
+	border-radius: 6pt;
+	box-shadow: -1px 1px 100px black;
+	text-align: center;
+}
+
+#hud-controls{
+	border-top-right-radius: 6pt;
+	border-top-left-radius: 6pt;
+	width: 100%;
+}
+
+#hud-controls a span{
+	padding-right: 3pt;
+}
+
+#showhud {
+	font-size: 55pt;
+	text-shadow: 0px 0px 5px;
+}
+
+.switch-menu {
+	position: relative;
+	height: 100%;
+	width: 150pt;
+	background-color: #1C2731;
+	border-bottom-left-radius: 6pt;
+}
+
+.view-pane {
+	left: 150pt;
+	margin-top: -106pt;
+}
+
+#scatter {
+	border-bottom-right-radius: 6pt;
+	position: relative;
+	width: 335pt;
+	left: 150pt;
+}
+
+
+.container {
+  max-width: 970px !important;
+}
+
+.switch-menu ul {
+	list-style: none;
+	padding-top: 10pt;
+	padding-bottom: 10pt;
+	padding-right: 10pt;
+	padding-left: 19pt;
+	color: skyblue;
+}
+
+.swt-list {
+	padding-bottom: 20pt;
+	padding-top: 20pt;
+}
+
+.swt {
+	float: right;
+}
+
+.swt-name {
+	float: left;
+}
