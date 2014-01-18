@@ -23,30 +23,6 @@ function changestate(currentElement)
 	}
 }
 
-
-function load()
-{
-	$(document).ready(function(){
-		$.ajax({
-			type: "GET",
-			url: "http://127.0.0.1:1111/",
-			success: function(data) {
-				var output = '';
-				var number = 1;
-				$.each(data.data, function(key, val) {
-					output += '<h3>' + val.device + '</h3> <img id="' + val.name + '" src="images/' + val.status + '.jpg"';
-					output += ' alt="toggle button" onclick="changestate(this)" /> <br />';
-					number++ ;
-				})
-				$('#main').html(output);
-			},
-			error: function(jqXHR, textStatus, errorThrown){
-				console.log(textStatus);
-			}
-		});
-	});
-}
-
 function sendData(inputs)
 {
 	$(document).ready(function(){
@@ -64,3 +40,26 @@ function sendData(inputs)
 	});
 }
 
+// function load()
+// {
+// 	$(document).ready(function(){
+// 		$.ajax({
+// 			type: "GET",
+// 			url: "http://127.0.0.1:1111/",
+// 			success: function(data) {
+// 				var output = '<ul>';
+// 				var number = 1;
+// 				$.each(data.data, function(key, val) {
+// 					output += '<li class="swt-list"><span class="swt-name">' + val.device + '</span><span class="swt switch-on switch-animate">';
+// 					output += '<input type="checkbox" data-toggle="switch"></span></li>';
+// 					number++ ;
+// 				})
+// 				output += '</ul>';
+// 				$('#deviceList').html(output);
+// 			},
+// 			error: function(jqXHR, textStatus, errorThrown){
+// 				console.log(textStatus);
+// 			}
+// 		});
+// 	});
+// }

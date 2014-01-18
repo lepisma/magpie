@@ -1,1 +1,1 @@
-{"data": [{"device": "fan", "status": "on", "name": "B1"}, {"device": "light", "status": "off", "name": "B2"}, {"device": "fan", "status": "on", "name": "B3"}]}
+{"data": [{"device": "Fan 1", "status": "on", "name": "B1"}, {"device": "Light 1", "status": "off", "name": "B2"}, {"device": "Fan 2", "status": "on", "name": "B3"}]}
