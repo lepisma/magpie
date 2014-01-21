@@ -1,25 +1,38 @@
+
 $(document).ready(function(){
+
+  //-----------------------------------------loads initial data----------------------------------------//
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:1111/",
+    url: "http://127.0.0.1:1111/all",
     success: function(data) {
+
       var output = '<ul>';
+      
       $.each(data.data, function(key, val) {
+
         output += '<li class="swt-list"><span class="swt-name">' + val.device + '</span>';
         output += '<input type="checkbox" data-toggle="switch" id="' + val.name + '"';
+        
         if(val.status == 'on'){
           output += ' checked';
         }
+
         output += '></li>';
       })
       output += '</ul>';
       $('#deviceList').html(output);
+
       $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
     },
     error: function(jqXHR, textStatus, errorThrown){
-      console.log(textStatus);
+      alert("An error occured.Please refresh your page.\nMaybe the server is down.")
+      console.log(errorThrown);
     }
   });
+
+
+  //-------------------------------------------for room panel------------------------------------------//
 
   $(".room-select").on('click', 'li', function() {
     if(!($(this).hasClass("room-selected"))){
@@ -27,6 +40,9 @@ $(document).ready(function(){
       $(this).siblings().removeClass("room-selected");
     }
   });
+
+
+  //-------------------------------------------for hud-control-----------------------------------------//
 
   $("#hud-controls").on('click', 'a', function() {
     if($(this).hasClass("active")){
@@ -38,6 +54,8 @@ $(document).ready(function(){
   });
 
 });
+
+//--------------------------------------is called when user changes state-------------------------------//
 
 function sendData(elem){
 
@@ -62,7 +80,7 @@ function sendReq(inputs)
 {
    $.ajax({
       type: "POST",
-      url: "http:127.0.0.1:1111/act",
+      url: "http:127.0.0.1:1111/change",
       data: inputs,
       success: function(result) {
         return 1;
@@ -72,3 +90,6 @@ function sendReq(inputs)
       }
     });
 }
+
+
+//*******************************************************************************************************//
