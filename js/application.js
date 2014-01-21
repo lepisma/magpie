@@ -6,16 +6,15 @@ $(document).ready(function(){
       var output = '<ul>';
       $.each(data.data, function(key, val) {
         output += '<li class="swt-list"><span class="swt-name">' + val.device + '</span>';
-        output += '<input type="checkbox" data-toggle="switch" name="'+ val.name + '" id="' + val.name + '"';
+        output += '<input type="checkbox" data-toggle="switch" id="' + val.name + '"';
         if(val.status == 'on'){
           output += ' checked';
         }
         output += '></li>';
-        //$("#B2").prop("checked");
       })
       output += '</ul>';
       $('#deviceList').html(output);
-      $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendReq(this)"/>').parent().bootstrapSwitch();
+      $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
     },
     error: function(jqXHR, textStatus, errorThrown){
       console.log(textStatus);
@@ -40,9 +39,13 @@ $(document).ready(function(){
 
 });
 
-function sendReq(elem){
-  deviceId = $(elem).children().children().attr("id");
-  if($(elem).children().children().prop("checked")){
+function sendData(elem){
+
+  elem = $(elem).find("input");
+  deviceId = elem.attr("id");
+  checked  = elem.prop("checked");
+
+  if(checked){
     newStatus = "on";
   }
   else{
@@ -52,8 +55,12 @@ function sendReq(elem){
     "deviceId": deviceId,
     "newStatus": newStatus
   };
+  sendReq(inputs)
+}
 
-  $.ajax({
+function sendReq(inputs)
+{
+   $.ajax({
       type: "POST",
       url: "http:127.0.0.1:1111/act",
       data: inputs,
@@ -65,37 +72,3 @@ function sendReq(elem){
       }
     });
 }
-
-// (function($) {
-
-  
-
-//   $(function() {
-    
-//     // Room list
-    
-
-//     $(".has-switch").click( function() {
-//       alert('did you call me');
-//       var deviceId = $(this).attr("id");
-//       var status   = $(this).prop("checked");
-//       var inputs = {
-//         'deviceId' : deviceId,
-//         'newStatus' : status
-//       };
-//       // sendData(inputs);
-//     });
-
-//     // HUD controls
-    
-
-
-//       // Switch
-      
-
-//       // make code pretty
-//       window.prettyPrint && prettyPrint();
-    
-//   });
-  
-// })(jQuery);
