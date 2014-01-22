@@ -9,10 +9,10 @@ def changeState(id,newStatus):
 		if info[i]['name'] == id:
 			state = info[i]['status']
 			if state == newStatus:
-				print 'already the status'
+				print('already the status')
 			else:
 				info[i]['status'] = newStatus
-				print 'status changed'
+				print('status changed')
 		json.dump(data, open('data.json', 'w'))
 
 	return 1
