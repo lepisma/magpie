@@ -1,6 +1,6 @@
 import json
 
-data = json.load(open('data.json', 'r+'))
+data = json.load(open('app/models/data.json', 'r+'))
 nos = len(data['data']) # Number of devices
 
 def changeState(id,newStatus):
@@ -13,6 +13,6 @@ def changeState(id,newStatus):
 			else:
 				info[i]['status'] = newStatus
 				print('status changed')
-		json.dump(data, open('data.json', 'w'))
+		json.dump(data, open('app/models/data.json', 'w'))
 
 	return 1

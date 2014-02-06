@@ -4,7 +4,7 @@ $(document).ready(function(){
   //-----------------------------------------loads initial data----------------------------------------//
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:1111/all",
+    url: getUrl,
     success: function(data) {
 
       var output = '<ul>';
@@ -80,7 +80,7 @@ function sendReq(inputs)
 {
    $.ajax({
       type: "POST",
-      url: "http:127.0.0.1:1111/change",
+      url: setUrl,
       data: inputs,
       success: function(result) {
         return 1;

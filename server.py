@@ -1,5 +1,5 @@
-from bottle import Bottle, request, response, run
-import controller
+from bottle import Bottle, request, response, run, template, static_file
+import writer
 
 app = Bottle()
 
@@ -11,13 +11,21 @@ def enable_cors():
 
 @app.get('/all')
 def show():
-    return controller.data
+    return writer.data
+
+@app.get('/')
+def mainpage():
+	return template("app/views/index")
+
+@app.get('<path:path>')
+def server_public(path):
+	return static_file(path, root = 'public/')
 
 @app.post('/change')
 def change():
 	deviceId = request.forms.get('deviceId')
 	newStatus = request.forms.get('newStatus')
-	controller.changeState(deviceId,newStatus)
+	writer.changeState(deviceId,newStatus)
 	return
 
 app.run(host = "0.0.0.0", port = 1111)

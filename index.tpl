@@ -3,13 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>.: Magpie :.</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <!-- Loading Bootstrap -->
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!-- Loading Flat UI -->
-    <link href="css/flat-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <!-- css loaded -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/flat-ui.css">
+    <link rel="stylesheet" href="css/application.css">
     <link rel="shortcut icon" href="images/favicon.ico">
   </head>
 
@@ -86,8 +83,10 @@
 
 
     <!-- Load JS here for greater good =============================-->
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript">
+        getUrl = "/all";
+        setUrl = "/change";
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-switch.js"></script>
