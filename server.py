@@ -41,7 +41,8 @@ def power_data():
 
   # insert sample data
   cursor.execute("INSERT INTO power VALUES ('2014-02-14', 6.05)")
-  cursor.execute("INSERT INTO power VALUES ('2014-02-15', 5.64)")
+  cursor.execute("INSERT INTO power VALUES ('2014-02-15', 12.64)")
+  cursor.execute("INSERT INTO power VALUES ('2014-02-16', 5.64)")
 
   # fetch power data
   cursor.execute("SELECT * FROM power")

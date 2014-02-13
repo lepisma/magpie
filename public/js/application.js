@@ -36,6 +36,8 @@ $(document).ready(function(){
     url: "/power",
     type: "GET",
     success: function(data, status, xhr) {
+
+
       var chart;
       var chartData = data.power_data;
 
@@ -46,7 +48,6 @@ $(document).ready(function(){
           chart.dataProvider = chartData;
           chart.dataDateFormat = "YYYY-MM-DD";
           chart.categoryField = "date";
-
 
           // AXES
           // category
@@ -59,7 +60,7 @@ $(document).ready(function(){
           categoryAxis.minorGridEnabled = false;
           categoryAxis.inside = true;
 
-          // value
+          // power
           var valueAxis = new AmCharts.ValueAxis();
           valueAxis.tickLength = 0;
           valueAxis.axisAlpha = 0;
@@ -81,10 +82,6 @@ $(document).ready(function(){
           var chartCursor = new AmCharts.ChartCursor();
           chart.addChartCursor(chartCursor);
 
-          // SCROLLBAR
-          // var chartScrollbar = new AmCharts.ChartScrollbar();
-          // chart.addChartScrollbar(chartScrollbar);
-
           // HORIZONTAL GREEN RANGE
           var guide = new AmCharts.Guide();
           guide.value = 10;
@@ -95,22 +92,24 @@ $(document).ready(function(){
           guide.lineAlpha = 0;
           valueAxis.addGuide(guide);
 
-          // TREND LINES
-          // first trend line
-          /*
+          var initialDate = new Date(1970, 0, 1, 0),
+              finalDate = new Date(3000, 0, 1, 0);
+          // Max Power Consumption Line
           var trendLine = new AmCharts.TrendLine();
-          // note,when creating date objects 0 month is January, as months are zero based in JavaScript.
-          trendLine.initialDate = new Date(2012, 0, 2, 12); // 12 is hour - to start trend line in the middle of the day
-          trendLine.finalDate = new Date(2012, 0, 11, 12);
-          trendLine.initialValue = 10;
-          trendLine.finalValue = 19;
+          trendLine.initialDate = initialDate;
+          trendLine.finalDate = finalDate;
+          trendLine.initialValue = data.warning_at;
+          trendLine.finalValue = data.warning_at;
           trendLine.lineColor = "#CC0000";
           chart.addTrendLine(trendLine);
-          */
 
           // WRITE
           chart.write("scatter");
       });
+
+    },
+    error: function() {
+      console.log("Some error occured while fetching graph data.");
     }
   });
 
