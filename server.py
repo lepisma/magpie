@@ -3,6 +3,9 @@ import writer
 import sqlite3
 import json
 
+# corresponds to the max allowed power consumption each day
+POWER_WARNING_LIMIT = 10
+
 app = Bottle()
 
 @app.hook('after_request')
@@ -44,7 +47,7 @@ def power_data():
   cursor.execute("SELECT * FROM power")
   data = cursor.fetchall()
 
-  dict = {"power_data": data}
+  dict = {"power_data": data, "warning_at": POWER_WARNING_LIMIT}
 
   return json.dumps(dict)
 
