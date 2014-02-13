@@ -1,5 +1,5 @@
 from bottle import Bottle, request, response, run, template, static_file
-import writer
+from lib import handler
 import sqlite3
 import json
 
@@ -16,7 +16,7 @@ def enable_cors():
 
 @app.get('/all')
 def show():
-    return writer.data
+    return handler.data
 
 @app.get('/')
 def mainpage():
@@ -42,7 +42,7 @@ def power_data():
   # insert sample data
   cursor.execute("INSERT INTO power VALUES ('2014-02-14', 6.05)")
   cursor.execute("INSERT INTO power VALUES ('2014-02-15', 12.64)")
-  cursor.execute("INSERT INTO power VALUES ('2014-02-16', 5.64)")
+  cursor.execute("INSERT INTO power VALUES ('2014-02-16', 17.36)")
 
   # fetch power data
   cursor.execute("SELECT * FROM power")
@@ -65,7 +65,7 @@ def power_data():
 def change():
 	deviceId = request.forms.get('deviceId')
 	newStatus = request.forms.get('newStatus')
-	writer.changeState(deviceId,newStatus)
+	handler.changeStateSwitch(deviceId,newStatus)
 	return
 
 app.run(host = "0.0.0.0", port = 1111)
