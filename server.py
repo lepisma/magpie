@@ -3,8 +3,6 @@ from lib import handler
 import sqlite3
 import json
 
-# corresponds to the max allowed power consumption each day
-POWER_WARNING_LIMIT = 10
 
 app = Bottle()
 
@@ -34,31 +32,7 @@ def power_data():
 
   connection = sqlite3.connect("app/models/magpie.db")
   cursor = connection.cursor()
-
-  cursor.execute("""CREATE TABLE IF NOT EXISTS power
-                    (date text, power real)
-                 """)
-
-  # insert sample data
-  cursor.execute("INSERT INTO power VALUES ('2014-02-14', 6.05)")
-  cursor.execute("INSERT INTO power VALUES ('2014-02-15', 12.64)")
-  cursor.execute("INSERT INTO power VALUES ('2014-02-16', 17.36)")
-
-  # fetch power data
-  cursor.execute("SELECT * FROM power")
-  data = cursor.fetchall()
-
-  plotdata = []
-
-  for value in data:
-    value = {
-      "date": value[0],
-      "power": value[1]
-    }
-    plotdata.append(value)
-
-  dict = {"power_data": plotdata, "warning_at": POWER_WARNING_LIMIT}
-
+  dict = handler.power(cursor)
   return json.dumps(dict)
 
 @app.post('/change')
