@@ -40,14 +40,23 @@ def power_data():
                  """)
 
   # insert sample data
-  cursor.execute("INSERT INTO power VALUES ('14/02/2014', 6.05)")
-  cursor.execute("INSERT INTO power VALUES ('15/02/2014', 5.64)")
+  cursor.execute("INSERT INTO power VALUES ('2014-02-14', 6.05)")
+  cursor.execute("INSERT INTO power VALUES ('2014-02-15', 5.64)")
 
   # fetch power data
   cursor.execute("SELECT * FROM power")
   data = cursor.fetchall()
 
-  dict = {"power_data": data, "warning_at": POWER_WARNING_LIMIT}
+  plotdata = []
+
+  for value in data:
+    value = {
+      "date": value[0],
+      "power": value[1]
+    }
+    plotdata.append(value)
+
+  dict = {"power_data": plotdata, "warning_at": POWER_WARNING_LIMIT}
 
   return json.dumps(dict)
 
