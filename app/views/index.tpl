@@ -48,7 +48,8 @@
                 <div class="switch-menu" id="deviceList">
                 </div>
                 <div class="view-pane">
-                    <img id="scatter" src="./images/graph.gif">
+                    <!-- <img id="scatter" src="./images/graph.gif"> -->
+                    <div id="scatter" style="width: 71%; height: 200px;"></div>
                 </div>
             </div>
         </div>
@@ -83,6 +84,8 @@
 
 
     <!-- Load JS here for greater good =============================-->
+    <script src="js/amcharts/amcharts.js" type="text/javascript"></script>
+    <script src="js/amcharts/serial.js" type="text/javascript"></script>
     <script type="text/javascript">
         getUrl = "/all";
         setUrl = "/change";

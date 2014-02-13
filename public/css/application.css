@@ -98,8 +98,8 @@ body {
 #scatter {
 	border-bottom-right-radius: 6pt;
 	position: relative;
-	width: 335pt;
 	left: 150pt;
+	top: -36pt;
 }
 
 
