@@ -36,12 +36,12 @@
             <div class="col-md-8 stats">
                 <div class="switch-menu" id="deviceList">
                     <ul>
-                    % for switch in switches['data']:
-                        <li class="swt-list"><span class="swt-name"> {{switch['device']}} </span>
-                        % if switch['status'] == "on":
-                            <input type="checkbox" data-toggle="switch" id="{{switch['name']}}" checked>
+                    % for switch in switches:
+                        <li class="swt-list"><span class="swt-name"> {{switch[0]}} </span>
+                        % if switch[1] == "on":
+                            <input type="checkbox" data-toggle="switch" id="{{switch[3]}}" checked>
                         % else:
-                            <input type="checkbox" data-toggle="switch" id="{{switch['name']}}">
+                            <input type="checkbox" data-toggle="switch" id="{{switch[3]}}">
                         % end
                         </li>
                     % end
