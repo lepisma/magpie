@@ -128,3 +128,12 @@ body {
 .swt-name {
 	float: left;
 }
+
+#logo {
+	margin-top: 50px;
+	text-align: center;
+}
+
+#logo img {
+	width: 200px;
+}
