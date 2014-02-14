@@ -35,6 +35,17 @@
             </div>
             <div class="col-md-8 stats">
                 <div class="switch-menu" id="deviceList">
+                    <ul>
+                    % for switch in switches['data']:
+                        <li class="swt-list"><span class="swt-name"> {{switch['device']}} </span>
+                        % if switch['status'] == "on":
+                            <input type="checkbox" data-toggle="switch" id="{{switch['name']}}" checked>
+                        % else:
+                            <input type="checkbox" data-toggle="switch" id="{{switch['name']}}">
+                        % end
+                        </li>
+                    % end
+                    </ul>
                 </div>
                 <div class="view-pane">
                     <!-- <img id="scatter" src="./images/graph.gif"> -->

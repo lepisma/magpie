@@ -17,12 +17,9 @@ def show():
     return handler.data
 
 @app.get('/')
-def mainpage():
-	return template("app/views/landing")
-
 @app.get('/home')
 def landingpage():
-  return template("app/views/home")
+  return template("app/views/home", switches = handler.data)
 
 @app.get('<path:path>')
 def server_public(path):

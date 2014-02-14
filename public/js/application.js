@@ -1,35 +1,7 @@
 
 $(document).ready(function(){
 
-  //-----------------------------------------loads initial data----------------------------------------//
-  $.ajax({
-    type: "GET",
-    url: getUrl,
-    success: function(data) {
-
-      var output = '<ul>';
-      
-      $.each(data.data, function(key, val) {
-
-        output += '<li class="swt-list"><span class="swt-name">' + val.device + '</span>';
-        output += '<input type="checkbox" data-toggle="switch" id="' + val.name + '"';
-        
-        if(val.status == 'on'){
-          output += ' checked';
-        }
-
-        output += '></li>';
-      })
-      output += '</ul>';
-      $('#deviceList').html(output);
-
-      $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
-    },
-    error: function(jqXHR, textStatus, errorThrown){
-      alert("An error occured.Please refresh your page.\nMaybe the server is down.")
-      console.log(errorThrown);
-    }
-  });
+  $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
 
   //-----------------------------------------plots the power graph----------------------------------------//
   $.ajax({

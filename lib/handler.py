@@ -1,10 +1,10 @@
 import json
 from lib import switches
 
+data = json.load(open('app/models/data.json', 'r+'))
 
 def changeStateSwitch(id,newStatus):
 
-	data = json.load(open('app/models/data.json', 'r+'))
 	nos = len(data['data']) # Number of devices
 	info = data['data']
 
