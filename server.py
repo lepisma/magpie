@@ -1,10 +1,10 @@
 from bottle import Bottle, request, response, run, template, static_file
-from lib import handler
 from app.controllers import controls, power
 import sqlite3
 
 # Connects [creates] the db
 connection = sqlite3.connect("magpie.db")
+connection.row_factory = sqlite3.Row
 cursor = connection.cursor()
 
 # Initializes bottle
@@ -20,7 +20,7 @@ def enable_cors():
 @app.get('/all')
 def show():
   response.headers['Content-Type'] = 'application/json'
-  return handler.data
+  return controls.getAll(cursor, True)
 
 # The home page
 @app.get('/')
