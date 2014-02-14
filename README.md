@@ -5,10 +5,13 @@ Simple and intuitive home automation
 
 Control your home appliances on the go.
 
-###Dependencies
+###Install
 
-* [Python](http://www.python.org)
-* [BottlePy](http://www.bottlepy.org) `pip install bottle`
+`pip install -r requirements`
+
+###Seed
+
+`python seedDB.py`
 
 ###License
 

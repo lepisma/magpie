@@ -1,6 +1,6 @@
 from bottle import Bottle, request, response, run, template, static_file
 from lib import handler
-from app.controllers import controls
+from app.controllers import controls, power
 import sqlite3
 
 # Connects [creates] the db
@@ -12,14 +12,15 @@ app = Bottle()
 
 @app.hook('after_request')
 def enable_cors():
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    # response.headers['Access-Control-Allow-Methods'] = 'PUT, GET, POST, DELETE, OPTIONS'
-    # response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
+  response.headers['Access-Control-Allow-Origin'] = '*'
+  # response.headers['Access-Control-Allow-Methods'] = 'PUT, GET, POST, DELETE, OPTIONS'
+  # response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
 
 # Returns switch states in JSON
 @app.get('/all')
 def show():
-    return handler.data
+  response.headers['Content-Type'] = 'application/json'
+  return handler.data
 
 # The home page
 @app.get('/')

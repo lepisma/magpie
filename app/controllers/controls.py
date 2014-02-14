@@ -5,4 +5,4 @@ def getAll(cursor):
 	return cursor.fetchall()
 
 def setState(cursor, id, newStatus):
-	cursor.execute("UPDATE switches SET status = " + str(newStatus) + " WHERE name = " + str(id))
+	cursor.execute("UPDATE switches SET status = '" + str(newStatus) + "' WHERE name = '" + str(id) + "'")
