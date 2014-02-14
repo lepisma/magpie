@@ -18,7 +18,11 @@ def show():
 
 @app.get('/')
 def mainpage():
-	return template("app/views/index")
+	return template("app/views/landing")
+
+@app.get('/home')
+def landingpage():
+  return template("app/views/home")
 
 @app.get('<path:path>')
 def server_public(path):
