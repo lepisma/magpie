@@ -3,6 +3,8 @@ $(document).ready(function(){
 
   $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
 
+  $(".swt-list").first().addClass("active");
+
   //-----------------------------------------plots the power graph----------------------------------------//
   $.ajax({
     url: "/power",
@@ -99,6 +101,15 @@ $(document).ready(function(){
   //-------------------------------------------for hud-control-----------------------------------------//
 
   $("#hud-controls").on('click', 'a', function() {
+    if($(this).hasClass("active")){
+    }
+    else{
+      $(this).addClass("active");
+      $(this).siblings().removeClass("active");
+    }
+  });
+
+  $("#deviceList ul").on('click', 'li', function() {
     if($(this).hasClass("active")){
     }
     else{
