@@ -92,7 +92,7 @@ $(document).ready(function(){
     url: '/temp',
     type: "GET",
     success: function(data) {
-      $('.temp').html(data);
+      $('#temp').html(data);
     },
     complete: function() {
       // Schedule the next request when the current one's complete
