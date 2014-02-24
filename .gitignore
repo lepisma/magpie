@@ -1,4 +1,5 @@
 /__pycache__
+magpie.db-journal
 *.pyc
 
 # sqlite db
