@@ -52,7 +52,8 @@ def change():
 # Get the temperature value
 @app.get('/temp')
 def get_temp():
-  return temperature.getTemperature(cursor)
+  temp = temperature.getTemperature(cursor)
+  return str(temp)
 
 # Run
 app.run(host = "0.0.0.0", port = 1111)
