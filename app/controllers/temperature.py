@@ -1,7 +1,7 @@
 import sqlite3
 
 def getTemperature(cursor):
-	cursor.execute("SELECT * FROM temperature limit 1")
+	cursor.execute("SELECT * FROM temperature LIMIT 0, 1")
 	data = cursor.fetchall()
 
 	for row in data:
