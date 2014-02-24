@@ -92,7 +92,7 @@ $(document).ready(function(){
   });
 
   //-------------------------------------------Setting temperature--------------------------------------//
-  (function worker() {  
+  (function tempwork() {  
     $.ajax({
       url: '/temp',
       type: "GET",
@@ -101,7 +101,22 @@ $(document).ready(function(){
       },
       complete: function() {
         // Schedule the next request when the current one's complete
-        setTimeout(worker, 60000);
+        setTimeout(tempwork, 60000);
+      }
+    });
+  })();
+
+  //-------------------------------------------Setting population--------------------------------------//
+  (function popwork() {  
+    $.ajax({
+      url: '/people',
+      type: "GET",
+      success: function(data) {
+        // $('#people').html(data);
+      },
+      complete: function() {
+        // Schedule the next request when the current one's complete
+        setTimeout(popwork, 60000);
       }
     });
   })();
