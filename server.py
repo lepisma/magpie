@@ -20,6 +20,7 @@ def enable_cors():
 @app.get('/all')
 def show():
   response.headers['Content-Type'] = 'application/json'
+  print controls.getAll(cursor, True)
   return controls.getAll(cursor, True)
 
 # The home page

@@ -4,7 +4,7 @@ connection = sqlite3.connect('magpie.db')
 cursor = connection.cursor()
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS switches
-                    (device text, status text, type text, name text)
+                    (name text, device text, status text, type text, slide int, alarm real)
                  """)
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS power
@@ -16,9 +16,9 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS temperature
              """)
 
 # Adding switches
-cursor.execute("INSERT INTO switches VALUES ('Fan 1', 'off', 'F', 'B1')")
-cursor.execute("INSERT INTO switches VALUES ('Light 1', 'on', 'L', 'B2')")
-cursor.execute("INSERT INTO switches VALUES ('Fan 2', 'on', 'F', 'B3')")
+cursor.execute("INSERT INTO switches VALUES ('B1', 'Fan 1', 'off', 'F', '12', '23.12')")
+cursor.execute("INSERT INTO switches VALUES ('B2', 'Light 1', 'on', 'L', '15', '23.46')")
+cursor.execute("INSERT INTO switches VALUES ('B3', 'Fan 2', 'on', 'F', '4', '9.30')")
 
 # Adding power usage
 cursor.execute("INSERT INTO power VALUES ('2014-02-14', 6.05)")
