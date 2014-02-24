@@ -123,12 +123,12 @@ $(document).ready(function(){
 
   //-------------------------------------------for room panel------------------------------------------//
 
-  $(".room-select").on('click', 'li', function() {
-    if(!($(this).hasClass("room-selected"))){
-      $(this).addClass("room-selected");
-      $(this).siblings().removeClass("room-selected");
-    }
-  });
+  // $(".room-select").on('click', 'li', function() {
+  //   if(!($(this).hasClass("room-selected"))){
+  //     $(this).addClass("room-selected");
+  //     $(this).siblings().removeClass("room-selected");
+  //   }
+  // });
 
 
   //-------------------------------------------for hud-control-----------------------------------------//
