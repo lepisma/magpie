@@ -11,6 +11,10 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS power
                 (date text, power real)
              """)
 
+cursor.execute("""CREATE TABLE IF NOT EXISTS temperature
+                (temp real)
+             """)
+
 # Adding switches
 cursor.execute("INSERT INTO switches VALUES ('Fan 1', 'off', 'F', 'B1')")
 cursor.execute("INSERT INTO switches VALUES ('Light 1', 'on', 'L', 'B2')")
@@ -20,5 +24,8 @@ cursor.execute("INSERT INTO switches VALUES ('Fan 2', 'on', 'F', 'B3')")
 cursor.execute("INSERT INTO power VALUES ('2014-02-14', 6.05)")
 cursor.execute("INSERT INTO power VALUES ('2014-02-15', 12.64)")
 cursor.execute("INSERT INTO power VALUES ('2014-02-16', 17.36)")
+
+# Adding sample temperature
+cursor.execute("INSERT INTO temperature VALUES (26.7)")
 
 connection.commit()
