@@ -2,6 +2,7 @@ currentSwitch = null;
 
 $(document).ready(function(){
 
+  extraValues = getExtraValues();
 
   $("[data-toggle='switch']").wrap('<div class="switch" onclick="switchData(this)"/>').parent().bootstrapSwitch();
 
@@ -91,18 +92,19 @@ $(document).ready(function(){
   });
 
   //-------------------------------------------Setting temperature--------------------------------------//
-  $.ajax({
-    url: '/temp',
-    type: "GET",
-    success: function(data) {
-      $('#temp').html(data);
-    },
-    complete: function() {
-      // Schedule the next request when the current one's complete
-      setTimeout(worker, 60000);
-    }
-  });
-
+  (function worker() {  
+    $.ajax({
+      url: '/temp',
+      type: "GET",
+      success: function(data) {
+        $('#temp').html(data);
+      },
+      complete: function() {
+        // Schedule the next request when the current one's complete
+        setTimeout(worker, 60000);
+      }
+    });
+  })();
 
   //-------------------------------------------for room panel------------------------------------------//
 
@@ -195,3 +197,27 @@ function sendReq(inputs, setUrl)
 
 
 //*******************************************************************************************************//
+
+//----------------------------------------- Functions for handling extraValues of switches --------------//
+
+function getExtraValues(){
+  $.ajax({
+      type: "GET",
+      url: "/all",
+      success: function(result){
+        return filterExtras(result);
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        console.log(textStatus);
+        return null;
+      }
+  });
+}
+
+function filterExtras(whole){
+  var filtered = [];
+  whole.forEach(function(entry){
+    filtered.push([entry['name'], entry['slide'], entry['alarm']]);
+  });
+  return filtered;
+}
