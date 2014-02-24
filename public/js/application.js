@@ -123,6 +123,8 @@ $(document).ready(function(){
     }
   });
 
+  //-------------------------------------------for switch list-----------------------------------------//
+
   $("#deviceList ul").on('click', 'li', function() {
     if($(this).hasClass("active")){
     }
@@ -166,7 +168,7 @@ function sendReq(inputs)
 {
    $.ajax({
       type: "GET",
-      url: setUrl,
+      url: "/change",
       data: inputs,
       success: function(result) {
         return 1;

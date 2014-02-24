@@ -12,10 +12,6 @@
     <link rel="shortcut icon" href="images/favicon.ico">
     <script src="js/amcharts/amcharts.js" type="text/javascript"></script>
     <script src="js/amcharts/serial.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        getUrl = "/all";
-        setUrl = "/change";
-    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-slider.js"></script>
