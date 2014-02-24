@@ -141,6 +141,17 @@ $(document).ready(function(){
 
   $("#valueslider").slider();
   $("#valueslider").on('slide', function(slideEvt) {
+
+    deviceId = "B1";                 // get the deviceId;
+    slide = slideEvt.value;
+    
+    inputs = {
+      "deviceId": deviceId,
+      "slide": slide
+    };
+    sendReq(inputs, "/slide");
+    console.log(slideEvt.value);
+
     console.log("Value changed");
   });
 
@@ -164,14 +175,14 @@ function switchData(elem){
     "deviceId": deviceId,
     "newStatus": newStatus
   };
-  sendReq(inputs)
+  sendReq(inputs, "/change")
 }
 
-function sendReq(inputs)
+function sendReq(inputs, setUrl)
 {
    $.ajax({
       type: "GET",
-      url: "/change",
+      url: setUrl,
       data: inputs,
       success: function(result) {
         return 1;
