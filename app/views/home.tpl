@@ -8,7 +8,20 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/flat-ui.css">
     <link rel="stylesheet" href="css/application.css">
+    <link rel="stylesheet" href="css/slider.css">
     <link rel="shortcut icon" href="images/favicon.ico">
+    <script src="js/amcharts/amcharts.js" type="text/javascript"></script>
+    <script src="js/amcharts/serial.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        getUrl = "/all";
+        setUrl = "/change";
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-slider.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/application.js"></script>
   </head>
 
       <body>
@@ -87,7 +100,11 @@
                     </div>
                     <div class="col-md-8 view-pane">
                         <!-- <img id="scatter" src="./images/graph.gif"> -->
-                        <div id="switchDetails"></div>
+                        <div id="switchDetails">
+                            <div id = "slider">
+                                <input id="valueslider" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="15" data-slider-step="1" data-slider-value="10"/>
+                            </div>
+                        </div>
                         <!-- <div id="view-pane-filler"></div> -->
                         <div id="scatter" style="width: 71%; height: 200px;"></div>
                     </div>
@@ -96,19 +113,6 @@
         </div>
     </div>
     <!--% include-->
-
-    <!-- Load JS here for greater good =============================-->
-    <script src="js/amcharts/amcharts.js" type="text/javascript"></script>
-    <script src="js/amcharts/serial.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        getUrl = "/all";
-        setUrl = "/change";
-    </script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-switch.js"></script>
-    <script src="js/flatui-checkbox.js"></script>
-    <script src="js/application.js"></script>
 
   </body>
 </html>

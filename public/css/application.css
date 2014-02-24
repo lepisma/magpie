@@ -151,3 +151,12 @@ body {
 #view-pane-graph * {
 	display: inline;
 }
+
+#slider {
+	text-align: center;
+	/* padding-top: 73px; */
+	padding: 10px;
+	position: relative;
+	top: 46px;
+	/* background: black; */
+}

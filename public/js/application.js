@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
 
+
   $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
 
   $(".swt-list").first().addClass("active");
@@ -129,6 +130,13 @@ $(document).ready(function(){
       $(this).addClass("active");
       $(this).siblings().removeClass("active");
     }
+  });
+
+  //------------------------------------------for slider-----------------------------------------------//
+
+  $("#valueslider").slider();
+  $("#valueslider").on('slide', function(slideEvt) {
+    console.log("Value changed");
   });
 
 });
