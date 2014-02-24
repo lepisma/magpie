@@ -6,6 +6,7 @@ $(document).ready(function(){
   $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
 
   $(".swt-list").first().addClass("active");
+  currentSwitch = $(".swt-list").first().find("input").attr("id");
 
   //-----------------------------------------plots the power graph----------------------------------------//
   $.ajax({
