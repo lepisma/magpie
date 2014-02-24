@@ -1,5 +1,5 @@
 from bottle import Bottle, request, response, run, template, static_file
-from app.controllers import controls, power, temperature
+from app.controllers import controls, power, stats
 import sqlite3
 
 # Connects [creates] the db
@@ -51,11 +51,16 @@ def change():
 	controls.setState(cursor, deviceId, newStatus)
 	return
 
-# Get the temperature value
+# Gets the temperature value
 @app.get('/temp')
 def get_temp():
-  temp = temperature.getTemperature(cursor)
+  temp = stats.getTemperature(cursor)
   return str(temp)
+
+# Gets the number of people
+@app.get("/people")
+def get_people():
+  return str(stats.getPeople(cursor))
 
 # Run
 app.run(host = "0.0.0.0", port = 1111)
