@@ -3,7 +3,7 @@ currentSwitch = null;
 $(document).ready(function(){
 
 
-  $("[data-toggle='switch']").wrap('<div class="switch" onclick="sendData(this)"/>').parent().bootstrapSwitch();
+  $("[data-toggle='switch']").wrap('<div class="switch" onclick="switchData(this)"/>').parent().bootstrapSwitch();
 
   $(".swt-list").first().addClass("active");
   currentSwitch = $(".swt-list").first().find("input").attr("id");
@@ -148,7 +148,7 @@ $(document).ready(function(){
 
 //--------------------------------------is called when user changes state-------------------------------//
 
-function sendData(elem){
+function switchData(elem){
 
   elem = $(elem).find("input");
   deviceId = elem.attr("id");
