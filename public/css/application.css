@@ -160,3 +160,7 @@ body {
 	top: 46px;
 	/* background: black; */
 }
+
+#hud-people {
+	display: none;
+}

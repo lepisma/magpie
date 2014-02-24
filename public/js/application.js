@@ -112,7 +112,7 @@ $(document).ready(function(){
       url: '/people',
       type: "GET",
       success: function(data) {
-        // $('#people').html(data);
+        $('#hud-people').html(data);
       },
       complete: function() {
         // Schedule the next request when the current one's complete
@@ -138,6 +138,14 @@ $(document).ready(function(){
     }
     else{
       $(this).addClass("active");
+      if($(this).children().first().hasClass("fui-user")){
+        $("#hud-temp").hide();
+        $("#hud-people").show();
+      }
+      if($(this).children().first().hasClass("fui-eye")){
+        $("#hud-people").hide();
+        $("#hud-temp").show();
+      }
       $(this).siblings().removeClass("active");
     }
   });

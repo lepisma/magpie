@@ -59,23 +59,27 @@
                 <div class="hud">
                     <div class="btn-group" id="hud-controls">
                         <a class="btn btn-primary active">
-                            <span class="fui-time"></span>
-                        </a>
-                        <a class="btn btn-primary">
                             <span class="fui-eye"></span>
-                        </a>
-                        <a class="btn btn-primary">
-                            <span class="fui-mail"></span>
-                        </a>
-                        <a class="btn btn-primary">
-                            <span class="fui-location"></span>
                         </a>
                         <a class="btn btn-primary">
                             <span class="fui-user"></span>
                         </a>
+                        <a class="btn btn-primary" disabled = "disabled">
+                            <span class="fui-cross"></span>
+                        </a>
+                        <a class="btn btn-primary" disabled = "disabled">
+                            <span class="fui-cross"></span>
+                        </a>
+                        <a class="btn btn-primary" disabled = "disabled">
+                            <span class="fui-cross"></span>
+                        </a>
                     </div>
                     <div id="showhud">
-                        <span id="temp"></span><sup>o</sup>C
+                        <div id = "hud-temp">
+                            <span id="temp"></span><sup>o</sup>C
+                        </div>
+                        <div id = "hud-people">
+                        </div>
                     </div>
                 </div>
             </div>
