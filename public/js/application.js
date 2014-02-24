@@ -1,3 +1,4 @@
+currentSwitch = null;
 
 $(document).ready(function(){
 
@@ -130,6 +131,7 @@ $(document).ready(function(){
     }
     else{
       $(this).addClass("active");
+      currentSwitch = $(this).find("input").attr("id");
       $(this).siblings().removeClass("active");
     }
   });
