@@ -62,5 +62,9 @@ def get_temp():
 def get_people():
   return str(stats.getPeople(cursor))
 
+@app.get("/slide")
+def slide():
+  return
+
 # Run
 app.run(host = "0.0.0.0", port = 1111)
