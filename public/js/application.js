@@ -87,6 +87,19 @@ $(document).ready(function(){
     }
   });
 
+  //-------------------------------------------Setting temperature--------------------------------------//
+  $.ajax({
+    url: '/temp',
+    type: "GET",
+    success: function(data) {
+      $('.temp').html(data);
+    },
+    complete: function() {
+      // Schedule the next request when the current one's complete
+      setTimeout(worker, 60000);
+    }
+  });
+
 
   //-------------------------------------------for room panel------------------------------------------//
 

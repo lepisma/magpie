@@ -66,7 +66,7 @@
                         </a>
                     </div>
                     <div id="showhud">
-                        23<sup>o</sup>C
+                        <span id="temp"></span><sup>o</sup>C
                     </div>
                 </div>
             </div>
