@@ -42,10 +42,11 @@ def power_data():
   return power.getAll_JSON(cursor)
 
 # Changes the state according to request
-@app.post('/change')
+@app.get('/change')
 def change():
-	deviceId = request.forms.get('deviceId')
-	newStatus = request.forms.get('newStatus')
+	deviceId = request.GET.get('deviceId')
+	newStatus = request.GET.get('newStatus')
+	print newStatus
 	controls.setState(cursor, deviceId, newStatus)
 	return
 

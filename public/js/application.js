@@ -157,7 +157,7 @@ function sendData(elem){
 function sendReq(inputs)
 {
    $.ajax({
-      type: "POST",
+      type: "GET",
       url: setUrl,
       data: inputs,
       success: function(result) {
