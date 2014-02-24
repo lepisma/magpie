@@ -3,6 +3,14 @@ import sqlite3
 connection = sqlite3.connect('magpie.db')
 cursor = connection.cursor()
 
+
+cursor.execute("""DROP TABLE IF EXISTS switches
+					""")
+cursor.execute("""DROP TABLE IF EXISTS power
+					""")
+cursor.execute("""DROP TABLE IF EXISTS temperature
+					""")
+
 cursor.execute("""CREATE TABLE IF NOT EXISTS switches
                     (name text, device text, status text, type text, slide int, alarm real)
                  """)
