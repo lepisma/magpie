@@ -101,9 +101,15 @@
                     <div class="col-md-8 view-pane">
                         <!-- <img id="scatter" src="./images/graph.gif"> -->
                         <div id="switchDetails">
-                            <div id = "slider">
-                                <input id="valueslider" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="15" data-slider-step="1" data-slider-value="10"/>
-                            </div>
+                            % for switch in switches:
+                                % if switch[0] == "B1":
+                                    <div id = "slider">
+                                        <input id="valueslider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="15" data-slider-step="1" data-slider-value="{{switch[4]}}"/>
+                                    </div>
+                                % else:
+                                    <div></div>
+                                % end
+                            % end
                         </div>
                         <!-- <div id="view-pane-filler"></div> -->
                         <div id="scatter" style="width: 71%; height: 200px;"></div>
