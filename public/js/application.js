@@ -1,4 +1,5 @@
 currentSwitch = null;
+previousSlide = 0;
 
 $(document).ready(function(){
 
@@ -169,15 +170,15 @@ $(document).ready(function(){
 
     deviceId = "B1";                 // get the deviceId;
     slide = slideEvt.value;
-    
-    inputs = {
-      "deviceId": deviceId,
-      "slide": slide
-    };
-    sendReq(inputs, "/slide");
-    console.log(slideEvt.value);
-
-    console.log("Value changed");
+    if( previousSlide != slide ){    
+      inputs = {
+        "deviceId": deviceId,
+        "slide": slide
+      };
+      sendReq(inputs, "/slide");
+      console.log(slide);
+    }
+    previousSlide = slide;
   });
 
 });
@@ -201,21 +202,6 @@ function switchData(elem){
     "newStatus": newStatus
   };
   sendReq(inputs, "/change")
-}
-
-function sendReq(inputs, setUrl)
-{
-   $.ajax({
-      type: "GET",
-      url: setUrl,
-      data: inputs,
-      success: function(result) {
-        return 1;
-      },
-      error: function(jqXHR, textStatus, errorThrown){
-        console.log(textStatus);
-      }
-    });
 }
 
 
@@ -243,4 +229,21 @@ function filterExtras(whole){
     filtered.push([entry['name'], entry['slide'], entry['alarm']]);
   });
   return filtered;
+}
+
+//--------------------------------- makes ajax calls to send data and retrieve response---------------------//
+
+function sendReq(inputs, setUrl)
+{
+   $.ajax({
+      type: "GET",
+      url: setUrl,
+      data: inputs,
+      success: function(result) {
+        return 1;
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        console.log(textStatus);
+      }
+    });
 }
