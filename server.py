@@ -16,13 +16,6 @@ def enable_cors():
   # response.headers['Access-Control-Allow-Methods'] = 'PUT, GET, POST, DELETE, OPTIONS'
   # response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
 
-# Returns switch states in JSON
-@app.get('/all')
-def show():
-  response.headers['Content-Type'] = 'application/json'
-  print controls.getAll(cursor, True)
-  return controls.getAll(cursor, True)
-
 # The home page
 @app.get('/')
 @app.get('/home')
@@ -32,37 +25,45 @@ def landingpage():
 # Static rendering
 @app.get('<path:path>')
 def server_public(path):
-	return static_file(path, root = 'public/')
+  return static_file(path, root = 'public/')
+
+# Returns switch states in JSON
+@app.get('/get/all')
+def show():
+  response.headers['Content-Type'] = 'application/json'
+  print controls.getAll(cursor, True)
+  return controls.getAll(cursor, True)
 
 # Returns power in JSON
-@app.get('/power')
+@app.get('/get/power')
 def power_data():
   """Returns  power data in JSON format
   """
   response.headers['Content-Type'] = 'application/json'
   return power.getAll_JSON(cursor)
 
-# Changes the state according to request
-@app.get('/change')
-def change():
-	deviceId = request.GET.get('deviceId')
-	newStatus = request.GET.get('newStatus')
-	print newStatus
-	controls.setState(cursor, deviceId, newStatus)
-	return
-
 # Gets the temperature value
-@app.get('/temp')
+@app.get('/get/temp')
 def get_temp():
   temp = stats.getTemperature(cursor)
   return str(temp)
 
 # Gets the number of people
-@app.get("/people")
+@app.get("/get/people")
 def get_people():
   return str(stats.getPeople(cursor))
 
-@app.get("/slide")
+# Changes the switch state according to request
+@app.get('/change/switch')
+def change():
+  deviceId = request.GET.get('deviceId')
+  newStatus = request.GET.get('newStatus')
+  print newStatus
+  controls.setState(cursor, deviceId, newStatus)
+  return
+
+# Changes the slider state according to request
+@app.get("/change/slide")
 def slide():
   deviceId = request.GET.get('deviceId')
   slide = request.GET.get('slide')

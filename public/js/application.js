@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   //-----------------------------------------plots the power graph----------------------------------------//
   $.ajax({
-    url: "/power",
+    url: "/get/power",
     type: "GET",
     success: function(data, status, xhr) {
 
@@ -95,7 +95,7 @@ $(document).ready(function(){
   //-------------------------------------------Setting temperature--------------------------------------//
   (function tempwork() {  
     $.ajax({
-      url: '/temp',
+      url: '/get/temp',
       type: "GET",
       success: function(data) {
         $('#temp').html(data);
@@ -110,7 +110,7 @@ $(document).ready(function(){
   //-------------------------------------------Setting population--------------------------------------//
   (function popwork() {  
     $.ajax({
-      url: '/people',
+      url: '/get/people',
       type: "GET",
       success: function(data) {
         $('#hud-people').html(data);
@@ -175,7 +175,7 @@ $(document).ready(function(){
         "deviceId": deviceId,
         "slide": slide
       };
-      sendReq(inputs, "/slide");
+      sendReq(inputs, "/change/slide");
       console.log(slide);
     }
     previousSlide = slide;
@@ -201,7 +201,7 @@ function switchData(elem){
     "deviceId": deviceId,
     "newStatus": newStatus
   };
-  sendReq(inputs, "/change")
+  sendReq(inputs, "/change/switch")
 }
 
 
@@ -212,7 +212,7 @@ function switchData(elem){
 function getExtraValues(){
   $.ajax({
       type: "GET",
-      url: "/all",
+      url: "/get/all",
       success: function(result){
         return filterExtras(result);
       },
