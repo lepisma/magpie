@@ -64,6 +64,10 @@ def get_people():
 
 @app.get("/slide")
 def slide():
+  deviceId = request.GET.get('deviceId')
+  slide = request.GET.get('slide')
+  print slide
+  controls.setSlide(cursor, deviceId, slide)
   return
 
 # Run

@@ -12,3 +12,7 @@ def getAll(cursor, api = False):
 
 def setState(cursor, id, newStatus):
 	cursor.execute("UPDATE switches SET status = '" + str(newStatus) + "' WHERE name = '" + str(id) + "'")
+	return
+
+def setSlide(cursor, id, slide):
+	cursor.execute("UPDATE switches SET slide = '" + str(slide) + "' WHERE name = '" + str(id) + "'")
