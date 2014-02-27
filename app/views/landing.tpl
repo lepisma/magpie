@@ -6,9 +6,9 @@
 		</div>
 
 		<div id = "entryForm">
-			<div id = "entryBtn" class = "btn btn-primary">
+			<a id = "entryBtn" class = "btn btn-primary" href = "/home">
 				Enter
-			</div>
+			</a>
 		</div>
 
 		<div id = "landingFooter">
