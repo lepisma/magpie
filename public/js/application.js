@@ -1,9 +1,10 @@
-currentSwitch = null;
-previousSlide = 0;
+currentSwitch = "B1";
+previousSlide = $("#valueslider").attr("data-slider-value");
+filtered = [];
 
 $(document).ready(function(){
 
-  extraValues = getExtraValues();
+  getExtraValues();
 
   $("[data-toggle='switch']").wrap('<div class="switch" onclick="switchData(this)"/>').parent().bootstrapSwitch();
 
@@ -122,6 +123,8 @@ $(document).ready(function(){
     });
   })();
 
+
+
   //-------------------------------------------for room panel------------------------------------------//
 
   // $(".room-select").on('click', 'li', function() {
@@ -151,7 +154,7 @@ $(document).ready(function(){
     }
   });
 
-  //-------------------------------------------for switch list-----------------------------------------//
+  //---------------------------------------------for device list------------------------------------------//
 
   $("#deviceList ul").on('click', 'li', function() {
     if($(this).hasClass("active")){
@@ -159,31 +162,45 @@ $(document).ready(function(){
     else{
       $(this).addClass("active");
       currentSwitch = $(this).find("input").attr("id");
+      // changeSlideBydevice();
+
+  previousSlide = filtered[currentSwitch[1]-1][1];
+  $("#valueslider").slider('setValue', previousSlide);
       $(this).siblings().removeClass("active");
     }
   });
 
-  //------------------------------------------for slider-----------------------------------------------//
+  //------------------------------------is called when user slides slider---------------------------------//
 
   $("#valueslider").slider();
   $("#valueslider").on('slide', function(slideEvt) {
 
-    deviceId = "B1";                 // get the deviceId;
+    deviceId = currentSwitch;                 // get the deviceId;
     slide = slideEvt.value;
-    if( previousSlide != slide ){    
+
+    if( previousSlide != slide ){
+
       inputs = {
         "deviceId": deviceId,
-        "slide": slide
+        "slide": slide,
       };
+
       sendReq(inputs, "/change/slide");
+      filtered[currentSwitch[1]-1][1] = slide;
       console.log(slide);
+
     }
     previousSlide = slide;
   });
 
 });
 
-//--------------------------------------is called when user changes state-------------------------------//
+//---------------------------------------is called when user changes active device--------------------------------//
+
+// function changeSlideByDevice(){
+// }
+
+//--------------------------------------is called when user changes switch  state---------------------------------//
 
 function switchData(elem){
 
@@ -214,7 +231,9 @@ function getExtraValues(){
       type: "GET",
       url: "/get/all",
       success: function(result){
-        return filterExtras(result);
+        // console.log(result);
+        filterExtras(result);
+        return result;
       },
       error: function(jqXHR, textStatus, errorThrown){
         console.log(textStatus);
@@ -224,11 +243,9 @@ function getExtraValues(){
 }
 
 function filterExtras(whole){
-  var filtered = [];
   whole.forEach(function(entry){
     filtered.push([entry['name'], entry['slide'], entry['alarm']]);
   });
-  return filtered;
 }
 
 //--------------------------------- makes ajax calls to send data and retrieve response---------------------//
@@ -244,6 +261,7 @@ function sendReq(inputs, setUrl)
       },
       error: function(jqXHR, textStatus, errorThrown){
         console.log(textStatus);
+        return 0;
       }
     });
 }
