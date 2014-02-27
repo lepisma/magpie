@@ -1,5 +1,5 @@
 currentSwitch = "B1";
-previousSlide = $("#valueslider").attr("data-slider-value");
+currentSlide = $("#valueslider").attr("data-slider-value");
 filtered = [];
 
 $(document).ready(function(){
@@ -163,9 +163,8 @@ $(document).ready(function(){
       $(this).addClass("active");
       currentSwitch = $(this).find("input").attr("id");
       // changeSlideBydevice();
-
-  previousSlide = filtered[currentSwitch[1]-1][1];
-  $("#valueslider").slider('setValue', previousSlide);
+      currentSlide = filtered[currentSwitch[1]-1][1];
+      $("#valueslider").slider('setValue', currentSlide);
       $(this).siblings().removeClass("active");
     }
   });
@@ -173,24 +172,20 @@ $(document).ready(function(){
   //------------------------------------is called when user slides slider---------------------------------//
 
   $("#valueslider").slider();
-  $("#valueslider").on('slide', function(slideEvt) {
+  $("#valueslider").on('slideStop', function(slideEvt) {
 
-    deviceId = currentSwitch;                 // get the deviceId;
+    deviceId = currentSwitch;
     slide = slideEvt.value;
-
-    if( previousSlide != slide ){
 
       inputs = {
         "deviceId": deviceId,
         "slide": slide,
       };
-
       sendReq(inputs, "/change/slide");
       filtered[currentSwitch[1]-1][1] = slide;
+      currentSlide = filtered[currentSwitch[1]-1][1];
       console.log(slide);
 
-    }
-    previousSlide = slide;
   });
 
 });
@@ -198,6 +193,8 @@ $(document).ready(function(){
 //---------------------------------------is called when user changes active device--------------------------------//
 
 // function changeSlideByDevice(){
+    // currentSlide = filtered[currentSwitch[1]-1][1];
+    // $("#valueslider").slider('setValue', currentSlide);
 // }
 
 //--------------------------------------is called when user changes switch  state---------------------------------//
