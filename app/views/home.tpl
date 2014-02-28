@@ -107,9 +107,22 @@
                                         <input id="valueslider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="15" data-slider-step="1" data-slider-value="{{switch[4]}}"/>
                                     </div>
                                 % else:
-                                    <div></div>
+                                    % break
                                 % end
                             % end
+
+                            <div id = "timer" class = "row">
+                                <div id = "currentTimer" class = "col-md-7">
+                                    23 : 30
+                                </div>
+                                <div id = "timerForm" class = "col-md-5">
+                                    <input type = "text" id = "timerHours" class = "timerField form-control" placeholder = "Hours">
+                                    <input type = "text" id = "timerMinutes" class = "timerField form-control" placeholder = "Minutes">
+                                    <span id = "setTimerBtn" class = "btn btn-primary btn-xs">
+                                        Set timer
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <!-- <div id="view-pane-filler"></div> -->
                         <div id="scatter" style="width: 71%; height: 200px;"></div>

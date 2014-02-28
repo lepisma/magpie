@@ -156,7 +156,7 @@ body {
 	display: none;
 }
 
-/*Landing page*/
+/*------------------------------------------------------------------------Landing page*/
 
 #landingFooter {
 	background: white;
@@ -200,4 +200,29 @@ body {
 	/* height: 100px; */
 	padding: 34px;
 	font-size: 30px;
+}
+
+/*--------------------------------------------------------Timer*/
+
+#timer {
+	position: relative;
+	top: 100px;
+	height: 176px;
+	background: rgb(255, 255, 255);
+	margin: 0px;
+}
+
+#currentTimer {
+	padding: 32px;
+	text-shadow: 0px 0px 8px;
+	font-size: 62px;
+}
+
+#timerForm {
+	padding: 30px;
+	display: inline;
+}
+
+.timerField {
+	margin-bottom: 10px;
 }
