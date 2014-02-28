@@ -1,5 +1,6 @@
 from bottle import Bottle, request, response, run, template, static_file
 from app.controllers import controls, power, stats
+import raspberry
 import sqlite3
 
 # Connects [creates] the db
