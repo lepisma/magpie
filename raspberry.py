@@ -13,10 +13,10 @@ while True:
 		read()
 		#write()
 
-		except KeyboardInterrupt:
-			ser.close()
-			print "Goodbye!"
-			raise
+	except KeyboardInterrupt:
+		ser.close()
+		print "Goodbye!"
+		raise
 
 ser.close()
 
@@ -35,18 +35,18 @@ def read():
 	read = ser.read(1)
 	if read == 'Z':
 		feedback(timeout)
-	else if read == 'C'    
+	elif read == 'C':
 		temperature(timeout)
-	else if read == 'P'
+	elif read == 'P':
 		num_person(timeout)
-	else if read == 'I'
+	elif read == 'I':
 		current(timeout)
 
 def feedback(timeout):
 	feedback = ''
 	while True:
 		read = ser.read(1)
-		if read == 'Q' or time.time()>timeout :
+		if read == 'Q' or time.time()>timeout:
 			cursor.execute("UPDATE stats SET feedback = " + str())
 			break
 		if read:
@@ -56,7 +56,7 @@ def temperature(timeout):
 	temperature = ''
 	while True:  
 		temperature = ser.read(4)
-		if temperature or time.time()>timeout :
+		if temperature or time.time()>timeout:
 			cursor.execute("UPDATE stats SET temp = " + str(temperature))
 			break
 	
@@ -64,7 +64,7 @@ def num_person(timeout):
 	num_person = ''
 	while True:
 		num_person = ser.read(2)
-		if num_person or time.time()>timeout :
+		if num_person or time.time()>timeout:
 			cursor.execute("UPDATE stats SET people = " + str(num_person))
 			break
 
@@ -72,6 +72,6 @@ def current():
 	current = ''
 	while True:
 		current = ser.read(4)
-		if current or time.time()>timeout :
+		if current or time.time()>timeout:
 			#Write to DB
 			break
