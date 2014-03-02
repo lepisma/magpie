@@ -200,7 +200,6 @@ function switchData(elem){
   sendReq(inputs, "/change/switch")
 }
 
-
 //*******************************************************************************************************//
 
 //----------------------------------------- Functions for handling extraValues of switches --------------//
@@ -221,6 +220,7 @@ function getExtraValues(){
 }
 
 function filterExtras(whole){
+  filtered = [];
   whole.forEach(function(entry){
     filtered.push([entry['name'], entry['slide'], entry['alarm']]);
   });
@@ -240,6 +240,25 @@ function checkForNotifications(){
 }
 
 //--------------------------------------------------------------------
+
+//-----------------------------------called when user changes clicks on set timer button
+
+function setTimer(){
+  time_in_boxes = getTime();
+  if (time_in_boxes != null) {
+    var data_to_send = {
+      "deviceId": currentSwitch,
+      "timer": parseFloat(time_in_boxes)
+    }
+    if (sendReq(data_to_send, "/change/timer") == 1){
+      console.log("succes");
+      filtered[currentSwitch[1] -1][2] = parseFloat(time_in_boxes);
+      updateView(currentSwitch);
+    }
+  }
+}
+
+//----------------------------------------------------------------
 
 //--------------------------------- makes ajax calls to send data and retrieve response---------------------//
 
@@ -328,7 +347,7 @@ function getTime(){
       return null;
     }
     else{
-      time = [hours, minutes];
+      var time = hours.toString() + "." + minutes.toString();
       return time;
     }
   }

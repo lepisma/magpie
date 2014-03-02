@@ -95,7 +95,7 @@
                                 <div id = "timerForm" class = "col-md-5">
                                     <input type = "text" id = "timerHours" class = "timerField form-control" placeholder = "Hours">
                                     <input type = "text" id = "timerMinutes" class = "timerField form-control" placeholder = "Minutes">
-                                    <span id = "setTimerBtn" class = "btn btn-primary btn-xs">
+                                    <span id = "setTimerBtn" class = "btn btn-primary btn-xs" onclick = "setTimer()">
                                         Set timer
                                     </span>
                                 </div>

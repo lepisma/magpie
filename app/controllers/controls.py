@@ -4,20 +4,22 @@ import json
 def getAll(cursor, api = False):
 	cursor.execute("SELECT * FROM switches")
 	dat = cursor.fetchall()
-
 	if api == True:
 		return json.dumps([dict(ix) for ix in dat])
 
 	return dat
 
-def setState(cursor, id, newStatus):
+def setState(cursor, conn, id, newStatus):
 	cursor.execute("UPDATE switches SET status = '" + str(newStatus) + "' WHERE name = '" + str(id) + "'")
+	conn.commit()
 	return
 
-def setSlide(cursor, id, slide):
-	cursor.execute("UPDATE switches SET slide = '" + str(slide) + "' WHERE name = '" + str(id) + "'")
+def setSlide(cursor, conn, id, slide):
+	cursor.execute("UPDATE switches SET slide = " + slide + " WHERE name = '" + str(id) + "'")
+	conn.commit()
+	return
 
-def setTimer(cursor, id, timer):
-	[hours, minutes] = timer.split(" ")
-	timerTime = hours + "." + minutes
-	cursor.execute("UPDATE switches SET alarm = '" + timerTime +"' WHERE name = '" + str(id) + "'")
+def setTimer(cursor, conn, id, timer):
+	cursor.execute("UPDATE switches SET alarm = " + timer +" WHERE name = '" + str(id) + "'")
+	conn.commit()
+	return
