@@ -262,3 +262,18 @@ function sendReq(inputs, setUrl)
       }
     });
 }
+
+// --------------------------------Helper functions for notifications
+
+function notificationBtnToggle(){
+  // Changes the color of notification button from blue to red, and vice versa
+  button = $("#notificationBtn");
+  if (button.hasClass("btn-info")){
+    button.removeClass("btn-info");
+    button.addClass("btn-danger");
+  }
+  else{
+    button.removeClass("btn-danger");
+    button.addClass("btn-info");
+  }
+}

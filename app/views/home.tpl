@@ -100,10 +100,33 @@
                                     </span>
                                 </div>
                             </div>
+                            <button id = "notificationBtn" class = "btn btn-info btn-lg" data-toggle = "modal" data-target = "#notModal">
+                                <span class = "fui-mail"></span>
+                            </button>
                         </div>
                         <!-- <div id="view-pane-filler"></div> -->
                         <div id="scatter" style="width: 71%; height: 200px;"></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Modal -->
+    <div class="modal fade" id="notModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Notifications</h4>
+                </div>
+                <div class="modal-body" id = "notificationBody">
+                    Here we will have notifications !
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primany btn-xs" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
