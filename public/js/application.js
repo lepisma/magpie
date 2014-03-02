@@ -4,6 +4,7 @@ filtered = [];
 
 $(document).ready(function(){
 
+
   getExtraValues();
 
   $("[data-toggle='switch']").wrap('<div class="switch" onclick="switchData(this)"/>').parent().bootstrapSwitch();
@@ -172,6 +173,7 @@ $(document).ready(function(){
   //------------------------------------is called when user slides slider---------------------------------//
 
   $("#valueslider").slider();
+  $(".tooltip").addClass("hide"); // Hides the tooltip from slider
   $("#valueslider").on('slideStop', function(slideEvt) {
 
     deviceId = currentSwitch;
