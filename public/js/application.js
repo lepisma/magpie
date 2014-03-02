@@ -298,6 +298,17 @@ function updateView(swt){
   currentTimer = filtered[swt[1] - 1][2];
 
   timer_array = currentTimer.toString().split(".");
+
+  if (timer_array[1] == null){
+    timer_array.push("00");
+  }
+
+  if (timer_array[0].length == 1){
+    timer_array[0] = timer_array[0] + "0";
+  }
+  if (timer_array[1].length == 1){
+    timer_array[1] = timer_array[1] + "0";
+  }
   timer_string = timer_array[0] + " : " + timer_array[1];
 
   $("#valueslider").slider('setValue', currentSlide); // Changes slider
