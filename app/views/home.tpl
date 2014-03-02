@@ -125,10 +125,10 @@
                     </button>
                 </div>
                 <div class="modal-body" id = "notificationBody">
-                    No Notifications !
+                    No new notification !
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primany btn-xs" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primany btn-xs" data-dismiss="modal" onclick = "deleteNoti()">Delete and Close</button>
                 </div>
             </div>
         </div>

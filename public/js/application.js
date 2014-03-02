@@ -230,13 +230,29 @@ function filterExtras(whole){
 function checkForNotifications(){
   $.get("/get/notifications",
     function(data){
-      if (data.length != 0){
+      if (data.length > 1){
         writeNotification(data);
-        notificationBtnToggle();
+        notificationBtnUnread();
+      }
+      else{
+        writeNotification("No new notification !");
+        notificationBtnNormal();
       }
     }
   );
 }
+
+//---------------------------------------called when notification is read
+
+function deleteNoti(){
+  $.get("/delete/notification",
+    function(data){
+        checkForNotifications();
+      }
+  );
+}
+
+//----------------------------------------------------------------
 
 //--------------------------------------------------------------------
 
@@ -288,8 +304,6 @@ function deleteTimer(){
     }
   });
 }
-
-//----------------------------------------------------------------
 
 //--------------------------------- makes ajax calls to send data and retrieve response---------------------//
 
@@ -354,17 +368,18 @@ function updateView(swt){
 
 // --------------------------------NOTIFICATIONS
 
-function notificationBtnToggle(){
-  // Changes the color of notification button from blue to red, and vice versa
+function notificationBtnNormal(){
+  // Changes the color of notification button from red to blue
   button = $("#notificationBtn");
-  if (button.hasClass("btn-info")){
-    button.removeClass("btn-info");
-    button.addClass("btn-danger");
-  }
-  else{
-    button.removeClass("btn-danger");
-    button.addClass("btn-info");
-  }
+  button.removeClass("btn-danger");
+  button.addClass("btn-info");
+}
+
+function notificationBtnUnread(){
+  // Changes color of notification button from blue to red
+  button = $("#notificationBtn");
+  button.removeClass("btn-info");
+  button.addClass("btn-danger");
 }
 
 function writeNotification(notification_string){
