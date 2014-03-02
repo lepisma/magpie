@@ -4,6 +4,7 @@ filtered = [];
 
 $(document).ready(function(){
 
+  checkForNotifications();
 
   getExtraValues();
 
@@ -246,6 +247,21 @@ function filterExtras(whole){
     filtered.push([entry['name'], entry['slide'], entry['alarm']]);
   });
 }
+
+// ----------------------------------called for checking notifications
+
+function checkForNotifications(){
+  $.get("/get/notifications",
+    function(data){
+      if (data.length != 0){
+        writeNotification(data);
+        notificationBtnToggle();
+      }
+    }
+  );
+}
+
+//--------------------------------------------------------------------
 
 //--------------------------------- makes ajax calls to send data and retrieve response---------------------//
 
