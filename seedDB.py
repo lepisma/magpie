@@ -34,6 +34,6 @@ cursor.execute("INSERT INTO power VALUES ('2014-02-15', 12.64)")
 cursor.execute("INSERT INTO power VALUES ('2014-02-16', 17.36)")
 
 # Adding sample stats
-cursor.execute("INSERT INTO stats VALUES (26.7, 4, "OverHeating")")
+cursor.execute("INSERT INTO stats VALUES (26.7, 4, 'OverHeating')")
 
 connection.commit()
