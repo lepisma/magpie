@@ -250,11 +250,20 @@ function setTimer(){
       "deviceId": currentSwitch,
       "timer": parseFloat(time_in_boxes)
     }
-    if (sendReq(data_to_send, "/change/timer") == 1){
-      console.log("succes");
-      filtered[currentSwitch[1] -1][2] = parseFloat(time_in_boxes);
-      updateView(currentSwitch);
-    }
+
+    $.ajax({
+      type: "GET",
+      url: "/change/timer",
+      data: data_to_send,
+      success: function(result){
+        console.log("succes");
+        filtered[currentSwitch[1] -1][2] = parseFloat(time_in_boxes);
+        updateView(currentSwitch);
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        console.log(textStatus);
+      }
+    });
   }
 }
 

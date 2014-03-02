@@ -70,7 +70,7 @@ def change():
   print newStatus
   # raspberry.write()
   controls.setState(cursor, connection, deviceId, newStatus)
-  return
+  return "ok"
 
 # Changes the slider state according to request
 @app.get("/change/slide")
@@ -79,7 +79,7 @@ def slide():
   slide = request.GET.get('slide')
   print slide
   controls.setSlide(cursor, connection, deviceId, slide)
-  return
+  return "ok"
 
 # Changes the timer for switch
 @app.get("/change/timer")
@@ -87,7 +87,7 @@ def timer():
   deviceId = request.GET.get('deviceId')
   timer = request.GET.get('timer')
   controls.setTimer(cursor, connection, deviceId, timer)
-  return
+  return "ok"
 
 # Run
 app.run(host = "0.0.0.0", port = 1111)
