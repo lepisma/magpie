@@ -26,6 +26,7 @@
   height: 100%;
   top: 0;
   bottom: 0;
+  background: rgb(42, 238, 255);
 }
 .slider.slider-horizontal .slider-handle {
   margin-left: -10px;
