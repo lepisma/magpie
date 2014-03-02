@@ -209,7 +209,6 @@ function getExtraValues(){
       type: "GET",
       url: "/get/all",
       success: function(result){
-        // console.log(result);
         filterExtras(result);
         updateView(currentSwitch);
       },
@@ -293,26 +292,39 @@ function sendReq(inputs, setUrl)
 
 function updateView(swt){
   // Updates the view of slider and timer using the current switch value and filtered array
-  console.log(swt);
   currentSlide = filtered[swt[1] - 1][1];
   currentTimer = filtered[swt[1] - 1][2];
 
-  timer_array = currentTimer.toString().split(".");
+  if (parseFloat(currentTimer) < 0){
+    writeTime("NA"); // DB stores -1 for timer not set
+  }
+  else{
+    timer_array = currentTimer.toString().split(".");
 
-  if (timer_array[1] == null){
-    timer_array.push("00");
+    if (timer_array[1] == null){
+      // If minute is 00 (the number is without decimal)
+      timer_array.push("00");
+    }
+
+    if (timer_array[0].length == 1){
+      // If hour has only one digit
+      timer_array[0] = timer_array[0] + "0";
+    }
+    if (timer_array[1].length == 1){
+      // If minute has only one digit
+      timer_array[1] = timer_array[1] + "0";
+    }
+    timer_string = timer_array[0] + " : " + timer_array[1];
+    writeTime(timer_string); // Changes timer
   }
 
-  if (timer_array[0].length == 1){
-    timer_array[0] = timer_array[0] + "0";
+  if (parseInt(currentSlide) < 0){
+    hideSlider(); // DB Store -1 for switches with no sliders
   }
-  if (timer_array[1].length == 1){
-    timer_array[1] = timer_array[1] + "0";
+  else{
+    showSlider();
+    $("#valueslider").slider('setValue', currentSlide); // Changes slider
   }
-  timer_string = timer_array[0] + " : " + timer_array[1];
-
-  $("#valueslider").slider('setValue', currentSlide); // Changes slider
-  writeTime(timer_string); // Changes timer
 }
 
 // --------------------------------NOTIFICATIONS
@@ -340,7 +352,11 @@ function writeNotification(notification_string){
 function hideSlider(){
   // Hides the slider
   // Use when the current switch does not support slider
-  $("#slider").hide();
+  $("#slider").addClass("invisible");
+}
+
+function showSlider(){
+  $("#slider").removeClass("invisible");
 }
 
 // ---------------------------------TIMER
