@@ -1,6 +1,6 @@
 from bottle import Bottle, request, response, run, template, static_file
 from app.controllers import controls, power, stats
-import raspberry
+# import raspberry
 import sqlite3
 
 # Connects [creates] the db
@@ -63,6 +63,7 @@ def change():
   deviceId = request.GET.get('deviceId')
   newStatus = request.GET.get('newStatus')
   print newStatus
+  # raspberry.write()
   controls.setState(cursor, deviceId, newStatus)
   return
 

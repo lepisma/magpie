@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/flat-ui.css">
     <link rel="stylesheet" href="css/application.css">
     <link rel="stylesheet" href="css/slider.css">
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/icon.png">
     <script src="js/amcharts/amcharts.js" type="text/javascript"></script>
     <script src="js/amcharts/serial.js" type="text/javascript"></script>
     <script src="js/jquery.min.js"></script>
