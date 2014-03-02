@@ -98,6 +98,9 @@
                                     <span id = "setTimerBtn" class = "btn btn-primary btn-xs" onclick = "setTimer()">
                                         Set timer
                                     </span>
+                                    <button id = "deleteTimerBtn" class = "btn btn-danger btn-xs" onclick = "deleteTimer()">
+                                        Delete timer
+                                    </button>
                                 </div>
                             </div>
                             <button id = "notificationBtn" class = "btn btn-info btn-lg" data-toggle = "modal" data-target = "#notModal">

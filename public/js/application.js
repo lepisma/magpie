@@ -266,6 +266,29 @@ function setTimer(){
   }
 }
 
+// -----------------------------------called when delete timer is pressed
+
+function deleteTimer(){
+  null_time = -1.0;
+  var data_to_send = {
+    "deviceId": currentSwitch,
+    "timer": null_time
+  }
+  $.ajax({
+    type: "GET",
+    url: "/change/timer",
+    data: data_to_send,
+    success: function(result){
+      console.log("succes");
+      filtered[currentSwitch[1] -1][2] = parseFloat(null_time);
+      updateView(currentSwitch);
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+      console.log(textStatus);
+    }
+  });
+}
+
 //----------------------------------------------------------------
 
 //--------------------------------- makes ajax calls to send data and retrieve response---------------------//
@@ -297,6 +320,7 @@ function updateView(swt){
 
   if (parseFloat(currentTimer) < 0){
     writeTime("NA"); // DB stores -1 for timer not set
+    $("#deleteTimerBtn").addClass("invisible");
   }
   else{
     timer_array = currentTimer.toString().split(".");
@@ -316,6 +340,7 @@ function updateView(swt){
     }
     timer_string = timer_array[0] + " : " + timer_array[1];
     writeTime(timer_string); // Changes timer
+    $("#deleteTimerBtn").removeClass("invisible");
   }
 
   if (parseInt(currentSlide) < 0){

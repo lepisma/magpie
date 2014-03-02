@@ -220,7 +220,8 @@ body {
 }
 
 #timerForm {
-	padding: 30px;
+	margin-top: 11px;
+	padding: 11px;
 	display: inline;
 }
 
