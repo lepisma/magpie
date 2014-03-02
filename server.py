@@ -57,6 +57,11 @@ def get_temp():
 def get_people():
   return str(stats.getPeople(cursor))
 
+# Get notifications
+@app.get("/get/notifications")
+def get_notifications():
+  return str(stats.getNotifications(cursor))
+
 # Changes the switch state according to request
 @app.get('/change/switch')
 def change():
