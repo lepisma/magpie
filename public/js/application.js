@@ -294,3 +294,33 @@ function hideSlider(){
   // Use when the current switch does not support slider
   $("#slider").hide();
 }
+
+// ---------------------------------TIMER
+
+function writeTime(timer_string){
+  // Writes the given time to timer div
+  $("#currentTimer").html(timer_string);
+}
+
+function getTime(){
+  // Returns the time to set (in array format) using the values filled in timer form
+  // Call this on button click of 'set timer' button
+  // Returns null if time set is wrong or null
+  hours = $("#timerHours").val();
+  minutes = $("#timerMinutes").val();
+  if (isNaN(hours) || isNaN(minutes)){
+    return null;
+  }
+  else{
+    hours = parseInt(hours);
+    minutes = parseInt(minutes);
+
+    if(hours < 0 || hours > 24 || minutes < 0 || minutes > 60){
+      return null;
+    }
+    else{
+      time = [hours, minutes];
+      return time;
+    }
+  }
+}
