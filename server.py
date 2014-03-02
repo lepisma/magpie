@@ -76,5 +76,13 @@ def slide():
   controls.setSlide(cursor, deviceId, slide)
   return
 
+# Changes the timer for switch
+@app.get("/change/timer")
+def timer():
+  deviceId = request.GET.get('deviceId')
+  timer = request.GET.get('timer')
+  controls.setTimer(cursor, deviceId, timer)
+  return
+
 # Run
 app.run(host = "0.0.0.0", port = 1111)

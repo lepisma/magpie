@@ -16,3 +16,8 @@ def setState(cursor, id, newStatus):
 
 def setSlide(cursor, id, slide):
 	cursor.execute("UPDATE switches SET slide = '" + str(slide) + "' WHERE name = '" + str(id) + "'")
+
+def setTimer(cursor, id, timer):
+	[hours, minutes] = timer.split(" ")
+	timerTime = hours + "." + minutes
+	cursor.execute("UPDATE switches SET alarm = '" + timerTime +"' WHERE name = '" + str(id) + "'")
