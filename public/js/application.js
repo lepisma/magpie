@@ -1,17 +1,15 @@
-currentSwitch = "B1";
-currentSlide = $("#valueslider").attr("data-slider-value");
 filtered = [];
+currentSwitch = null;
 
 $(document).ready(function(){
 
-  checkForNotifications();
+  checkForNotifications(); // Checks for notifications
 
-  getExtraValues();
+  $("[data-toggle='switch']").wrap('<div class="switch" onclick="switchData(this)"/>').parent().bootstrapSwitch(); // Creates the switches
 
-  $("[data-toggle='switch']").wrap('<div class="switch" onclick="switchData(this)"/>').parent().bootstrapSwitch();
-
-  $(".swt-list").first().addClass("active");
+  $(".swt-list").first().addClass("active"); // Selects the first switch
   currentSwitch = $(".swt-list").first().find("input").attr("id");
+  getExtraValues(); // Get extravalues of switches and push to filtered array
 
   //-----------------------------------------plots the power graph----------------------------------------//
   $.ajax({
@@ -126,17 +124,6 @@ $(document).ready(function(){
   })();
 
 
-
-  //-------------------------------------------for room panel------------------------------------------//
-
-  // $(".room-select").on('click', 'li', function() {
-  //   if(!($(this).hasClass("room-selected"))){
-  //     $(this).addClass("room-selected");
-  //     $(this).siblings().removeClass("room-selected");
-  //   }
-  // });
-
-
   //-------------------------------------------for hud-control-----------------------------------------//
 
   $("#hud-controls").on('click', 'a', function() {
@@ -164,9 +151,8 @@ $(document).ready(function(){
     else{
       $(this).addClass("active");
       currentSwitch = $(this).find("input").attr("id");
-      // changeSlideBydevice();
-      currentSlide = filtered[currentSwitch[1]-1][1];
-      $("#valueslider").slider('setValue', currentSlide);
+      updateView(currentSwitch);
+
       $(this).siblings().removeClass("active");
     }
   });
@@ -192,13 +178,6 @@ $(document).ready(function(){
   });
 
 });
-
-//---------------------------------------is called when user changes active device--------------------------------//
-
-// function changeSlideByDevice(){
-    // currentSlide = filtered[currentSwitch[1]-1][1];
-    // $("#valueslider").slider('setValue', currentSlide);
-// }
 
 //--------------------------------------is called when user changes switch  state---------------------------------//
 
@@ -233,11 +212,10 @@ function getExtraValues(){
       success: function(result){
         // console.log(result);
         filterExtras(result);
-        return result;
+        updateView(currentSwitch);
       },
       error: function(jqXHR, textStatus, errorThrown){
         console.log(textStatus);
-        return null;
       }
   });
 }
@@ -282,6 +260,21 @@ function sendReq(inputs, setUrl)
 }
 
 // --------------------------------Helper UI functions
+
+// --------------------------------Updates switch views
+
+function updateView(swt){
+  // Updates the view of slider and timer using the current switch value and filtered array
+  console.log(swt);
+  currentSlide = filtered[swt[1] - 1][1];
+  currentTimer = filtered[swt[1] - 1][2];
+
+  timer_array = currentTimer.toString().split(".");
+  timer_string = timer_array[0] + " : " + timer_array[1];
+
+  $("#valueslider").slider('setValue', currentSlide); // Changes slider
+  writeTime(timer_string); // Changes timer
+}
 
 // --------------------------------NOTIFICATIONS
 
