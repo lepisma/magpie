@@ -20,3 +20,8 @@ def getNotifications(cursor):
 
 	for row in data:
 		return row[2]
+
+def deleteNotification(cursor, conn):
+	cursor.execute("UPDATE stats SET feedback = ''")
+	conn.commit()
+	return

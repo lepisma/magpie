@@ -89,5 +89,10 @@ def timer():
   controls.setTimer(cursor, connection, deviceId, timer)
   return "ok"
 
+@app.get("/delete/notification")
+def delete_notification():
+  stats.deleteNotification(cursor, connection)
+  return "ok"
+
 # Run
 app.run(host = "0.0.0.0", port = 1111)
