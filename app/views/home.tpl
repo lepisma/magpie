@@ -90,7 +90,7 @@
 
                             <div id = "timer" class = "row">
                                 <div id = "currentTimer" class = "col-md-7">
-                                    23 : 30
+                                    NA
                                 </div>
                                 <div id = "timerForm" class = "col-md-5">
                                     <input type = "text" id = "timerHours" class = "timerField form-control" placeholder = "Hours">
@@ -123,7 +123,7 @@
                     <h4 class="modal-title" id="myModalLabel">Notifications</h4>
                 </div>
                 <div class="modal-body" id = "notificationBody">
-                    Here we will have notifications !
+                    No Notifications !
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primany btn-xs" data-dismiss="modal">Close</button>

@@ -265,7 +265,9 @@ function sendReq(inputs, setUrl)
     });
 }
 
-// --------------------------------Helper functions for notifications
+// --------------------------------Helper UI functions
+
+// --------------------------------NOTIFICATIONS
 
 function notificationBtnToggle(){
   // Changes the color of notification button from blue to red, and vice versa
@@ -278,4 +280,17 @@ function notificationBtnToggle(){
     button.removeClass("btn-danger");
     button.addClass("btn-info");
   }
+}
+
+function writeNotification(notification_string){
+  // Writes notification text in modal
+  $("#notificationBody").html(notification_string);
+}
+
+// ------------------------------ SLIDER
+
+function hideSlider(){
+  // Hides the slider
+  // Use when the current switch does not support slider
+  $("#slider").hide();
 }
