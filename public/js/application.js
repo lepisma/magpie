@@ -232,6 +232,9 @@ function checkForNotifications(){
     function(data){
       if (data.length > 1){
         writeNotification(data);
+        if (data == "Overheating"){
+          hideEverything();
+        }
         notificationBtnUnread();
       }
       else{
@@ -427,4 +430,13 @@ function getTime(){
       return time;
     }
   }
+}
+
+// --------------------------------Hide controls
+
+function hideEverything(){
+  // Call in case of overheating
+  $(".swt-list").addClass("invisible");
+  $("#timer").addClass("invisible");
+  $("#slider").addClass("invisible");
 }
