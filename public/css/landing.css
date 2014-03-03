@@ -1,0 +1,44 @@
+body {
+	background-image: url("../images/back.png");
+	background-repeat: repeat;
+}
+
+#landing {
+	border-style: solid;
+	border-width: 0px;
+	border-top-width: 8px;
+	border-color: rgb(1, 179, 136);
+}
+
+#landingText {
+	margin-top: 20px;
+}
+
+#landingTitle {
+	font-size: 71px;
+	color: rgb(4, 182, 189);
+	text-shadow: 0px 0px 4px black;
+}
+
+#landingSummary {
+	font-size: 20px;
+	color: rgb(134, 134, 134);
+}
+
+#logo img {
+	width: 100px;
+}
+
+.form-control {
+	margin-top: 20px;
+}
+
+#entryForm {
+	margin-top: 200px;
+}
+
+#logo {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+}
