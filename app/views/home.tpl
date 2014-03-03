@@ -133,3 +133,7 @@
             </div>
         </div>
     </div>
+
+
+    
+    <script src="js/application.js"></script>

@@ -9,12 +9,7 @@
     <link rel="stylesheet" href="css/application.css">
     <link rel="stylesheet" href="css/slider.css">
     <link rel="shortcut icon" href="images/icon.png">
-    <body>
 
-    % include
-
-    <!-- Load JS here for greater good =============================-->
-    
     <script src="js/amcharts/amcharts.js" type="text/javascript"></script>
     <script src="js/amcharts/serial.js" type="text/javascript"></script>
     <script src="js/jquery.min.js"></script>
@@ -22,7 +17,10 @@
     <script src="js/bootstrap-slider.js"></script>
     <script src="js/bootstrap-switch.js"></script>
     <script src="js/flatui-checkbox.js"></script>
-    <script src="js/application.js"></script>
+    <body>
+
+    % include
+    
 
   </body>
 </html>

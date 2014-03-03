@@ -42,3 +42,9 @@ body {
 	top: 20px;
 	right: 20px;
 }
+
+#entryError {
+	text-align: center;
+	color: dimgray;
+	background-color: rgb(255, 210, 210);
+}

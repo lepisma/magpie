@@ -10,12 +10,17 @@
 			</div>
 		</div>
 		<div id = "entryForm" class = "col-md-5">
-			<input type = "text" class = "form-control" placeholder = "Password" id = "entryField">
-			<button id = "entryBtn" class = "btn btn-primary form-control">
+			<input type = "password" class = "form-control" placeholder = "Password" id = "entryField">
+			<button id = "entryBtn" class = "btn btn-primary form-control" onclick = "login()">
 				Enter
 			</button>
+			<div id = "entryError" class = "form-control invisible">
+				Wrong Password !
+			</div>
 		</div>
 	</div>
 	<div id = "logo">
 		<img src = "images/iit.gif">
 	</div>
+
+	<script src = "js/landing.js"></script>
