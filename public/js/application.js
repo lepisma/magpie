@@ -351,11 +351,11 @@ function updateView(swt){
 
     if (timer_array[0].length == 1){
       // If hour has only one digit
-      timer_array[0] = timer_array[0] + "0";
+      timer_array[0] = "0" + timer_array[0];
     }
     if (timer_array[1].length == 1){
       // If minute has only one digit
-      timer_array[1] = timer_array[1] + "0";
+      timer_array[1] = "0" + timer_array[1];
     }
     timer_string = timer_array[0] + " : " + timer_array[1];
     writeTime(timer_string); // Changes timer
@@ -424,7 +424,7 @@ function getTime(){
     hours = parseInt(hours);
     minutes = parseInt(minutes);
 
-    if(hours < 0 || hours > 24 || minutes < 0 || minutes > 60){
+    if(hours < 0 || hours > 23 || minutes < 0 || minutes > 59){
       return null;
     }
     else{
