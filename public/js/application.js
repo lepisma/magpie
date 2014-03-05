@@ -173,7 +173,7 @@ $(document).ready(function(){
       sendReq(inputs, "/change/slide");
       filtered[currentSwitch[1]-1][1] = slide;
       currentSlide = filtered[currentSwitch[1]-1][1];
-      console.log(slide);
+      // console.log(slide);
 
   });
 
@@ -186,6 +186,7 @@ function switchData(elem){
   elem = $(elem).find("input");
   deviceId = elem.attr("id");
   checked  = elem.prop("checked");
+  updateView(currentSwitch);
 
   if(checked){
     newStatus = "on";
@@ -274,7 +275,7 @@ function setTimer(){
       url: "/change/timer",
       data: data_to_send,
       success: function(result){
-        console.log("succes");
+        console.log("success");
         filtered[currentSwitch[1] -1][2] = parseFloat(time_in_boxes);
         updateView(currentSwitch);
       },
@@ -298,7 +299,7 @@ function deleteTimer(){
     url: "/change/timer",
     data: data_to_send,
     success: function(result){
-      console.log("succes");
+      console.log("success");
       filtered[currentSwitch[1] -1][2] = parseFloat(null_time);
       updateView(currentSwitch);
     },
@@ -334,6 +335,7 @@ function updateView(swt){
   // Updates the view of slider and timer using the current switch value and filtered array
   currentSlide = filtered[swt[1] - 1][1];
   currentTimer = filtered[swt[1] - 1][2];
+  state = $("#" + swt).prop("checked");
 
   if (parseFloat(currentTimer) < 0){
     writeTime("NA"); // DB stores -1 for timer not set
@@ -360,12 +362,12 @@ function updateView(swt){
     $("#deleteTimerBtn").removeClass("invisible");
   }
 
-  if (parseInt(currentSlide) < 0){
-    hideSlider(); // DB Store -1 for switches with no sliders
+  if (parseInt(currentSlide) > 0 && state == true){
+    showSlider(); // DB Store -1 for switches with no sliders
+    $("#valueslider").slider('setValue', currentSlide); // Changes slider
   }
   else{
-    showSlider();
-    $("#valueslider").slider('setValue', currentSlide); // Changes slider
+    hideSlider();
   }
 }
 
