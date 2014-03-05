@@ -15,7 +15,7 @@ cursor.execute("""DROP TABLE IF EXISTS stats
 					""")
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS switches
-                    (name text, device text, status text, type text, slide int, alarm real)
+                    (id text, name text, status text, type text, slide int, alarm real)
                  """)
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS power
