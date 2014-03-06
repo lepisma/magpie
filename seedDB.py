@@ -28,7 +28,7 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS stats
 
 # Adding switches
 cursor.execute("INSERT INTO switches VALUES ('B1', 'Fan 1', 'off', 'F', 12, 23.12)")
-cursor.execute("INSERT INTO switches VALUES ('B2', 'Light 1', 'on', 'L', -1, 23.46)")
+cursor.execute("INSERT INTO switches VALUES ('B2', 'Light 1', 'on', 'B', -1, 23.46)")
 cursor.execute("INSERT INTO switches VALUES ('B3', 'Fan 2', 'on', 'F', 4, -1)")
 
 # Adding power usage

@@ -67,9 +67,9 @@ def get_notifications():
 def change():
   deviceId = request.GET.get('deviceId')
   newStatus = request.GET.get('newStatus')
-  print newStatus
-  # raspberry.write()
+  controls.linkToPi(cursor, 'switch', deviceId, newStatus)
   controls.setState(cursor, connection, deviceId, newStatus)
+  # print newStatus
   return "ok"
 
 # Changes the slider state according to request
@@ -77,8 +77,9 @@ def change():
 def slide():
   deviceId = request.GET.get('deviceId')
   slide = request.GET.get('slide')
-  print slide
+  controls.linkToPi(cursor, 'slide', deviceId, slide)
   controls.setSlide(cursor, connection, deviceId, slide)
+  # print slide
   return "ok"
 
 # Changes the timer for switch
