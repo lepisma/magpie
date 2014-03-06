@@ -5,14 +5,14 @@ cursor = connection.cursor()
 
 
 cursor.execute("""DROP TABLE IF EXISTS switches
-					""")
+                    """)
 cursor.execute("""DROP TABLE IF EXISTS power
-					""")
+                    """)
 cursor.execute("""DROP TABLE IF EXISTS temperature
-					""")
+                    """)
 
 cursor.execute("""DROP TABLE IF EXISTS stats
-					""")
+                    """)
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS switches
                     (id text, name text, status text, type text, slide int, alarm real)

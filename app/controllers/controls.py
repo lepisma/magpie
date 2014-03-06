@@ -1,5 +1,6 @@
 import sqlite3
 import json
+# from lib import raspberry
 
 def getAll(cursor, api = False):
 	cursor.execute("SELECT * FROM switches")
