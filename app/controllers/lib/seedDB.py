@@ -23,13 +23,14 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS power
              """)
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS stats
-                (temp real, people int, feedback text)
+                (temp text, people int, feedback text)
              """)
 
 # Adding switches
-cursor.execute("INSERT INTO switches VALUES ('B1', 'Fan 1', 'off', 'F', 12, 23.12)")
-cursor.execute("INSERT INTO switches VALUES ('B2', 'Light 1', 'on', 'B', -1, 23.46)")
-cursor.execute("INSERT INTO switches VALUES ('B3', 'Fan 2', 'on', 'F', 4, -1)")
+cursor.execute("INSERT INTO switches VALUES ('B1', 'Light 1', 'off', 'B', -1, 23.12)")
+cursor.execute("INSERT INTO switches VALUES ('B2', 'Light 2', 'on', 'B', -1, 23.46)")
+cursor.execute("INSERT INTO switches VALUES ('B3', 'Light 3', 'on', 'B', -1, -1)")
+cursor.execute("INSERT INTO switches VALUES ('B4', 'Fan 1', 'on', 'F', 11, -1)")
 
 # Adding power usage
 cursor.execute("INSERT INTO power VALUES ('2014-02-14', 6.05)")

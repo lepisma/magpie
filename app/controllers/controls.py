@@ -29,7 +29,9 @@ def setTimer(cursor, conn, id, timer):
 def linkToPi(cursor, route, id, status):
   cursor.execute("SELECT type from switches WHERE id = '" + str(id) + "'")
   switch_type = cursor.fetchall()[0][0]
-  switch_id = id[1]
+  cursor.execute("SELECT name from switches WHERE id = '" + str(id) + "'")
+  switch_name = cursor.fetchall()[0][0]
+  switch_id = switch_name[len(switch_name)-1]
   switch_id = str(switch_id)
   if len(switch_id) == 1:
   	switch_id = "0" + switch_id
