@@ -100,7 +100,7 @@
                             % for switch in switches:
                                 % if switch[0] == "B1":
                                     <div id = "slider">
-                                        <input id="valueslider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="15" data-slider-step="1" data-slider-value="{{switch[4]}}"/>
+                                        <input id="valueslider" data-slider-id='ex1Slider' type="text" data-slider-min="1" data-slider-max="15" data-slider-step="1" data-slider-value="{{switch[4]}}"/>
                                     </div>
                                 % else:
                                     % break
