@@ -4,7 +4,7 @@ from app.controllers import controls, power, stats
 import sqlite3
 
 # Connects [creates] the db
-connection = sqlite3.connect("magpie.db")
+connection = sqlite3.connect("/home/pi/project/magpie/app/controllers/lib/magpie.db")
 connection.row_factory = sqlite3.Row
 cursor = connection.cursor()
 

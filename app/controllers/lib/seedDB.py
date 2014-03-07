@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect('magpie.db')
+connection = sqlite3.connect('/home/pi/project/magpie/app/controllers/lib/magpie.dbmagpie.db')
 cursor = connection.cursor()
 
 

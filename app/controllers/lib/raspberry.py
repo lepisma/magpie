@@ -55,7 +55,7 @@ def temperature(timeout):
 			temperature = temperature + data
 	temp = str(temperature)
 	print temp
-	cursor.execute("UPDATE stats SET temp = " + str(temp) + " WHERE id = '1'")
+	cursor.execute("UPDATE stats SET temp = " + str(temp))
 	cursor.execute("SELECT * FROM stats")
 	print cursor.fetchall()
 	
