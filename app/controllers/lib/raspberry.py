@@ -1,24 +1,13 @@
 import serial
 import time
 import sqlite3
+import datetime
+import ast
 
-connection = sqlite3.connect("magpie.db")
+connection = sqlite3.connect("/home/pi/project/magpie/app/controllers/lib/magpie.db")
 cursor = connection.cursor()
 
-ser = serial.Serial('/dev/ttyAMA0', 9600)
-ser.open()
-
-while True:
-	try:
-		read()
-		#write()
-
-	except KeyboardInterrupt:
-		ser.close()
-		print "Goodbye!"
-		raise
-
-ser.close()
+ser = serial.Serial('/dev/ttyAMA0', 9600, timeout=0.5)
 
 def write(switch_type, switch_id, switch_status):
 	data = switch_type+switch_id+switch_status
@@ -29,24 +18,27 @@ def write(switch_type, switch_id, switch_status):
 	"""
 	ser.write(data)
 	print data
+	return time.time()+20
 
 def read():
-	timeout = time.time() + 60*10
-	read = ser.read(1)
-	if read == 'Z':
+	read_data = ser.read(1)
+	timeout = time.time() + 300
+	if read_data == 'Z':
 		feedback(timeout)
-	elif read == 'C':
+	elif read_data == 'C':
 		temperature(timeout)
-	elif read == 'P':
+	elif read_data == 'P':
 		num_person(timeout)
-	elif read == 'I':
-		current(timeout)
+	elif read_data == 'I':
+		energy(timeout)
+	connection.commit()
 
 def feedback(timeout):
 	feedback = ''
 	while True:
 		read = ser.read(1)
 		if read == 'Q' or time.time()>timeout:
+			print feedback
 			cursor.execute("UPDATE stats SET feedback = " + str())
 			break
 		if read:
@@ -54,11 +46,18 @@ def feedback(timeout):
 
 def temperature(timeout):
 	temperature = ''
+	data = ''
 	while True:  
-		temperature = ser.read(4)
-		if temperature or time.time()>timeout:
-			cursor.execute("UPDATE stats SET temp = " + str(temperature))
-			break
+		data = ser.read(1)
+		if data:
+			if data == 'Q' or time.time()>timeout:
+				break
+			temperature = temperature + data
+	temp = str(temperature)
+	print temp
+	cursor.execute("UPDATE stats SET temp = " + str(temp) + " WHERE id = '1'")
+	cursor.execute("SELECT * FROM stats")
+	print cursor.fetchall()
 	
 def num_person(timeout):
 	num_person = ''
@@ -68,10 +67,31 @@ def num_person(timeout):
 			cursor.execute("UPDATE stats SET people = " + str(num_person))
 			break
 
-def current():
-	current = ''
+def energy(timeout):
+	energy = ''
+	data = ''
 	while True:
-		current = ser.read(4)
-		if current or time.time()>timeout:
-			#Write to DB
-			break
+		data = ser.read(1)
+		if data:
+			if data == 'Q' or time.time()>timeout:
+				break
+			energy = energy + data
+	power = ast.literal_eval(energy)
+	print power
+	date_cur = str(datetime.datetime.now().date().year) + '-' + str(datetime.datetime.now().date().month) + '-' + str(datetime.datetime.now().date().day)  
+	cursor.execute("UPDATE power SET power = power + " + str(power) + ", date = " + str(date_cur))
+
+timeout = time.time()+10
+print timeout
+stat = 0
+
+
+#while True:
+# 	try:
+# 		read()
+#
+#	except KeyboardInterrupt:
+#		ser.close()
+#		print "Goodbye!"
+#		raise
+
