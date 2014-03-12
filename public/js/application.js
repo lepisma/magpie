@@ -55,7 +55,7 @@ $(document).ready(function(){
           graph.valueField = "power";
           graph.dashLength = 3;
           graph.bullet = "round";
-          graph.balloonText = "[[category]]<br><b><span style='font-size:14px;'>Power Consumed:[[value]]</span></b>";
+          graph.balloonText = "[[category]]<br><b><span style='font-size:14px;'>Energy Consumed:[[value]]</span></b>";
           chart.addGraph(graph);
 
           // CURSOR
