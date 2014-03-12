@@ -3,7 +3,10 @@ Magpie
 Simple and intuitive home automation
 -------------------------------------
 
-Control your home appliances on the go.
+The web interface for home automation project based on Raspberry Pi
+
+###Screen
+![Screenshot](/screens/magpie.png)
 
 ###Install
 
