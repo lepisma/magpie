@@ -19,10 +19,6 @@ def enable_cors():
 
 # The home page
 @app.get('/')
-def landingpage():
-  return template("app/views/landing")
-
-@app.get('/home')
 def homepage():
   return template("app/views/home", switches = controls.getAll(cursor))
 
